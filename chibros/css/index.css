@@ -31,3 +31,49 @@ max-width: 98%;
 margin:10px 0px;
 border-radius: 5px;                 
 }
+nav{
+    background:black;
+    max-width:100%;
+}
+nav ul{
+    width: 1024px;
+    margin:auto;
+    padding:20px;
+    list-style: none;    
+}
+nav ul li{
+    padding:11px;
+    display:inline;
+    margin:20px;
+}
+nav ul li a{
+    text-decoration:none;
+    color:white;
+}
+nav ul li:hover{
+    background:grey;
+}
+#banner{
+    background:url("../images/Screenshot_20200908-233311_1599607949125.jpg");
+    background-repeat: no-repeat;
+    background-position:cover;
+    background-position-x:center;
+    height:550px;
+    width:100%;  
+}
+.content{
+      max-width:40%;   
+}
+.content h4 p{
+    color:red;
+}
+.content p span{
+    color:red;
+    padding:5px; 
+    margin-top:10px;
+}
+.content p span{
+    margin:auto 10px;
+}
+    
+ 

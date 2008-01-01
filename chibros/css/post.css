@@ -5,7 +5,6 @@
     padding:0px 20px 40px; 
     margin-top:70px;
     border-radius:10px;
-    background:rgb(175, 120, 120);
 }
 
 header hr{
@@ -15,7 +14,6 @@ header hr{
 }
 header h1{
     text-align:center;
-    color:lightgrey;
 }
 .frm_input{
     margin:20px 40px;    
@@ -35,7 +33,6 @@ input:hover{
  label strong{
     font-size:20px;
     line-height: 40px;
-    color:lightgrey;
 }
 #textarea{
     width: 98%;
