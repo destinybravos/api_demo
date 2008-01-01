@@ -7,7 +7,7 @@ $(document).ready(function(){
                 action: 'fetch_posts', 
                 post_id: 'post id/sn',
              },
-        success:function(response){ 
+        success:function(response){ console.log(response)
         
              $loop_array="";       
              response.posts.forEach(function(post){                                      

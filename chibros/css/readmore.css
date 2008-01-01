@@ -43,9 +43,6 @@
         margin-top:10px;
     }
 }
-#header h4 p{
-    margin-bottom:5px;
-}
 .pimg{ 
       width:90%;            
       height: 350px;    
@@ -57,3 +54,19 @@
             margin:40px 20px
         }
     }
+    #header h4 p{
+    margin-bottom:5px;
+}
+.btn_buttons{
+    width:100px;
+    padding:10px;
+    margin:5px;
+    border:none;
+    box-shadow:0 0 3px grey;
+    border-radius:8px;
+    background:blue;
+    color:white;
+}
+#btnEdit{
+    text-align:right;
+}

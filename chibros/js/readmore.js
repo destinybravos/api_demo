@@ -9,9 +9,8 @@ $.ajax({
         action: 'read_post', 
         post_id: $id,
      },
-    success: function (response){
-    
-        if(response.status==="success"){console.log(response.post.author)
+    success: function (response){   
+        if(response.status==="success"){
             $post_card = `<div class="content"> 
                                     <header id="header">     
                                     <h4>
@@ -24,7 +23,8 @@ $.ajax({
                                     <p><span>Author:</span>${response.post.author.firstname} ${response.post.author.lastname}</p>
                                     <p><span>Authors_ID:</span>${response.post.author.id}</p>
                                     <p><span>Date of post:</span>${response.post.created_at}</p>      
-                                </div>`;
+                                    <div id="btnEdit"><button id="test" class="btn_buttons">Edit Post</button></div>
+                             </div>`;
 
         }else{
             alert(response.message);
@@ -33,4 +33,9 @@ $.ajax({
         $('#readmore_content').html($post_card);
         
     }
+});
+
+$("#btnEdit").on("click", function(e){console.log(e);
+
+  alert("helo");
 });
