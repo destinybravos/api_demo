@@ -1,4 +1,4 @@
-![Package version](https://img.shields.io/npm/v/axios-auth-refresh?label=version)
+![Package version](https://)
 
 # API DEMO APP
 ## A basic demostration on how HTTP Request and Api Works
