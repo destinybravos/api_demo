@@ -1,5 +1,4 @@
 var token = '';
-$(document).ready(function(){
 
     $('form[name=reg_form]').on('submit', function(ev){
 
@@ -71,6 +70,7 @@ $(document).ready(function(){
             success: function (response) {
                 if(response.status == 'success'){
                     let mytoken = response.user.access_token;
+                    console.log(response)
                     store_token(mytoken);
                 }else{
                     alert(response.message);
@@ -93,7 +93,6 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (response) {
                 if(response.status == 'success'){
-                    alert('Login Successful');
                     window.location.href = 'http://localhost/api_demo/index.php';
                 }else{
                     alert('An Unexpeted Error');
@@ -118,7 +117,7 @@ $(document).ready(function(){
                 if(response.status === 'success'){
                     token = response.access_token;
                 }else{
-                    alert('Access Token not found');
+                    console.log('Access Token not found');
                 }
             },
             error: function(xhr, status, msg){
@@ -130,8 +129,7 @@ $(document).ready(function(){
     }
 
     // Set the Access Token on a hidden field with the ID of #hidden_token
-    $('#hidden_token').text(retrieve_token());
+    $('#hidden_token').text(retrieve_token() ? retrieve_token() : '');
     // OR Set the Access Token on the content attribute of a meta element with the name of _token
-    $('meta[name=access_token]').attr('content', retrieve_token());
-    
-});
+    $('meta[name=access_token]').attr('content', retrieve_token() ? retrieve_token() : '');
+
