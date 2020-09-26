@@ -17,7 +17,7 @@ Below are som guidelines on how to install and make use of the Demo App.
 
 ## Demo Application Setup
 #### Database Tables
-The project was made with the database table exported on the SQL files named "['api_db.sql'](https://github.com/destinybravos/api_demo/) on the root directory of the project. All you need to do is simply to create a database called "api_demo" on your local server, then import the file "['api_db.sql'](https://github.com/destinybravos/api_demo/) to it.
+The project was made with the database table exported on the SQL files named "['api_db.sql'](https://github.com/destinybravos/api_demo/blob/master/api_demo.sql) on the root directory of the project. All you need to do is simply to create a database called **"api_demo"** on your local server, then import the file "['api_db.sql'](https://github.com/destinybravos/api_demo/blob/master/api_demo.sql) to it.
 
 ### Usage (Making use of the API Demo)
 First, note that all the php files are stored in "api_demo/api/" directory. So, making reference to any php file there should be to the file on the api directory. 
@@ -94,7 +94,7 @@ This object above can then be sent to the url [http://localhost/api_demo/session
 
 **Data for retrieving access token from session:**
 ```javascript
-    //Example of Response Object from the login request
+    //Just send the 'get_session' to the api and you will get the access token back as response
     {
         action: 'get_session', 
     }
