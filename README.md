@@ -17,4 +17,24 @@ Below are som guidelines on how to install and make use of the Demo App.
 
 ## Demo Application Setup
 #### Database Tables
-The project was made with the database table exported on the SQL files named "['api_db.sql']() on the root directory of the project. All you need to do is simply to create a database called "api_demo" on your local server, then import the file "['api_db.sql']() to it.
+The project was made with the database table exported on the SQL files named "['api_db.sql'](https://github.com/destinybravos/api_demo/) on the root directory of the project. All you need to do is simply to create a database called "api_demo" on your local server, then import the file "['api_db.sql'](https://github.com/destinybravos/api_demo/) to it.
+
+### Usage (Making use of the API Demo)
+First, note that all the php files are stored in "api_demo/api/" directory. So, making reference to any php file there should be to the file on the api directory. 
+
+**For instance,** when you have successfully clone the app into your local server, it base url will be [http://localhost/api_demo](http://localhost/api_demo). Therefore, if you want to access the "login.php" file, the url will simply be [http://localhost/api_demo/api/login.php](http://localhost/api_demo/api/login.php) and "register.php will simply be [http://localhost/api_demo/api/register.php](http://localhost/api_demo/api/register.php).
+
+#### Registration Credentials
+To add a user to the database you have to make a ***HTTP Post Request*** to [http://localhost/api_demo/api/register.php](http://localhost/api_demo/api/register.php) with the basic data passed with the request either with the formData class or just as a JavaScript object.
+
+**Example in JavaScript:**
+```javascript
+    //building a data object and Using on the request
+    let data = {
+        firstname: ...,
+        lastname: ...,
+        email: ...,
+        password: ...,
+        phone: ...
+    }
+```
