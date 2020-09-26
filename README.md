@@ -93,12 +93,12 @@ The data needed by the session to store the token is given below;
 This object above can then be sent to the url [http://localhost/api_demo/session.php](http://localhost/api_demo/session.php) with a **Post Request** and the token will be store in session. The token can then be retrieved when needed simply by send just the action to the same url [http://localhost/api_demo/session.php](http://localhost/api_demo/session.php); 
 
 **Data for retrieving access token from session:**
-``javascript
+```javascript
     //Example of Response Object from the login request
     {
         action: 'get_session', 
     }
-``
+```
 Example of the basic implementation of the store and retrieve token processes is done on the ***"js/custom.js"*** of this repository using ***$.ajax() Jquery Method***.
 
 ## BLOG POST MANAGEMENT
