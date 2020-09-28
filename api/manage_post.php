@@ -1,0 +1,95 @@
+<?php
+
+include_once 'server_connection.php';
+
+    // Initialize response array
+    $response = array();
+    
+    $action = $_POST['action'];
+
+    if($action === 'fetch_posts'){
+        $posts = array();
+        $query_posts = $conn->query("SELECT * FROM blogposts ORDER BY created_at DESC");
+        $no_post = $query_posts->num_rows;
+        // echo $conn->error; //Error Message from Query
+        if($no_post > 0){
+            while ($post_data = $query_posts->fetch_assoc()) {
+                $author = getAuthorByID($post_data['author_id'], $conn);
+                $post_data['author'] = $author;
+                array_push($posts, $post_data);
+            }
+        }
+        $response = [
+            'status' => 'success',
+            'status_code' => '1',
+            'message' => $no_post . ' fetched successfully.',
+            'no_posts' => $no_post,
+            'posts' => $posts
+        ];
+    }else{
+        // Apart from fetch posts, every other operation requires the access token
+        if(isset($_POST['token']) and $_POST['token'] != ''){
+            if($action == 'save_post'){
+                $token = $_POST['token'];
+                $title = $_POST['title'];
+                $body = $_POST['body'];
+                $author_id = getAuthorID($token, $conn);
+                // Save Posts
+                if($title != ''){
+                    $add_post = $conn->query("INSERT INTO blogposts(title, body, author_id) VALUES('$title','$body','$author_id')");
+                    if($add_post){
+                        $response = [
+                            'status' => 'success',
+                            'status_code' => '1',
+                            'message' => 'Post added successfully',
+                        ];
+                    }else{
+                        $response = [
+                            'status' => 'error',
+                            'status_code' => '0',
+                            'message' => 'An unexpected error occured!'
+                        ];  
+                    }
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'status_code' => '2',
+                        'message' => 'Empty fields detected! Please enter neccessary post details.'
+                    ]; 
+                }
+            }
+        }else{
+            $response = [
+                'status' => 'error',
+                'status_code' => '0',
+                'message' => 'Un-Authorized Request! No Access token found on request.'
+            ];
+        }
+    }
+        
+    
+
+    echo json_encode($response);
+
+
+    function getAuthorByID($id, $conn){
+        $query_user = $conn->query("SELECT * FROM users WHERE id='$id'");
+        $user = $query_user->fetch_assoc();
+        $author = [
+            'id' => $user['id'],
+            'firstname' => $user['firstname'],
+            'lastname' => $user['lastname'],
+            'email' => $user['email']
+        ];
+        return $author;
+    }
+
+    function getAuthorByToken($access_token, $conn){
+        
+    }
+
+    function getAuthorID($access_token, $conn){
+        $query_user = $conn->query("SELECT * FROM users WHERE access_token='$access_token'");
+        $user = $query_user->fetch_assoc();
+        return  (int)$user['id'];
+    }
