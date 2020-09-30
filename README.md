@@ -202,6 +202,6 @@ To delete a post, simply send a **HTTP Post Request** to [http://localhost/api_d
 ```
 
 ### Conclusion! 
-**These are some of the basic operations and function of this "Simple API Demo App"". For further question, verification, clarification, issue or complaign, *simply open the issue tab on the repository (on github) and log the issue there let's tackle it together!**
+**These are some of the basic operations and function of this "Simple API Demo App"". For further question, verification, clarification, issue or complaign, simply open the *issue tab* on the repository (on github) and log the issue there let's tackle it together!**
 
 #### ***Goodluck!***
