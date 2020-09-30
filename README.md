@@ -4,7 +4,7 @@
 # API DEMO APP
 ## A basic demostration on how HTTP Request and Api Works
 
-This project is a demo project for my students and it describes how to make HTTP Request through Javascript to a certain end-point which portrays the use of Javascripts to make APIs Call.
+This project is a demo project for my students at ***PROGRAMMERS' CITY*** and it describes how to make HTTP Request through Javascript to a certain end-point which portrays the use of Javascripts to make APIs Call.
 
 The project made use of a dummy Core PHP core to access a particular database where some basic data/information were stored and retrieved and then returned back with the HTTP Request to the end-point where the calls were made.
 
@@ -101,8 +101,107 @@ This object above can then be sent to the url [http://localhost/api_demo/session
 ```
 Example of the basic implementation of the store and retrieve token processes is done on the ***"js/custom.js"*** of this repository using ***$.ajax() Jquery Method***.
 
+
 ## BLOG POST MANAGEMENT
 #### Introduction to the Blog Part of this API Demo
 On an attempt to further illustrate how to make **HTTP Request** from javascript to a back-end usually an api to get data and use them on user interface, a blog section is also added to this repository to create, edit and delete blog posts from the database using setting http request and url. 
 
-*Details coming soon on blog management ...!*
+#### Add Posts/Articles
+To add/create a post, simply send a **HTTP Post Request** to [http://localhost/api_demo/api/manage_post.php](http://localhost/api_demo/api/manage_post.php) with the following data;
+
+```javascript
+    {
+        action: 'save_post', 
+        title: 'Post Title/Headline', 
+        body: 'Post Body/Article', 
+        token: 'User Access Token', 
+    }
+```
+with the user's access token sent with the request, the api system will automatically detect the post author and store the author's ID as a foreign key which then defines the relationship between the author/user and the post.
+
+#### Retrieving Posts/Articles
+Retrieving all the posts, simply send a **HTTP Post Request** to [http://localhost/api_demo/api/manage_post.php](http://localhost/api_demo/api/manage_post.php) with the following data;
+
+```javascript
+    {
+        action: 'fetch_posts',  
+    }
+```
+This will return a response with a array of posts. Each element of the array "posts" is an object than contain the post details as well as the author object which contain all the details about the post author. Below is an example structure of the response. 
+
+```javascript
+    {
+        "status": "success",
+        "status_code": "1",
+        "message": "1 fetched successfully.",
+        "no_posts": 1,
+        "posts": [
+            {
+                "id": "1",
+                "title": "Testing First Post",
+                "body": "This is the detailed body of this post",
+                "author_id": "1",
+                "created_at": "2020-09-29 17:50:36",
+                "author": {
+                    "id": "1",
+                    "firstname": "Destiny",
+                    "lastname": "Brotobor",
+                    "email": "db4bravos@yahoo.com"
+                }
+            },
+            {
+                "id": "2",
+                "title": "Another Post",
+                "body": "This is the detailed body of another post",
+                "author_id": "1",
+                "created_at": "2020-09-29 19:30:12",
+                "author": {
+                    "id": "1",
+                    "firstname": "Destiny",
+                    "lastname": "Brotobor",
+                    "email": "db4bravos@yahoo.com"
+                }
+            }
+        ]
+    }
+```
+Therefore, getting the posts from the response requires a loop which will loop through each of the elements of the posts array in order to use them within your user interface.
+
+#### Read Posts/Articles (View Post Details)
+To open and read the details of a particular post, simply send a **HTTP Post Request** to [http://localhost/api_demo/api/manage_post.php](http://localhost/api_demo/api/manage_post.php) with the **post_id *(Required)*** and the following data;
+
+```javascript
+    {
+        action: 'read_post', 
+        post_id: 'post id/sn',  
+    }
+```
+
+#### Editing Posts/Articles
+Editing a particular post, simply send a **HTTP Post Request** to [http://localhost/api_demo/api/manage_post.php](http://localhost/api_demo/api/manage_post.php) with the **post_id *(Required)*** and the following data;
+
+```javascript
+    {
+        action: 'edit_post', 
+        post_id: 'post id/sn', 
+        title: 'Post Title/Headline', 
+        body: 'Post Body/Article', 
+        token: 'User Access Token', 
+    }
+```
+
+#### Deleting Posts/Articles
+To delete a post, simply send a **HTTP Post Request** to [http://localhost/api_demo/api/manage_post.php](http://localhost/api_demo/api/manage_post.php) with the following data;
+
+```javascript
+    {
+        action: 'delete_post', 
+        post_id: 'post id/sn', 
+        token: 'User Access Token', 
+    }
+```
+
+### Conclusion! 
+**These are some of the basic operations and function of this "Simple API Demo App"". For further question, verification, clarification, issue or complaign, *simply open the issue tab on the repository (on github) and log the issue there let's tackle it together!**
+
+#### ***Goodluck!***

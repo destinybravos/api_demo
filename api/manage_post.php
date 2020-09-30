@@ -26,6 +26,28 @@ include_once 'server_connection.php';
             'no_posts' => $no_post,
             'posts' => $posts
         ];
+    }else if($action == 'read_post'){
+        $post_id = $_POST['post_id'];
+        $fetch_post = $conn->query("SELECT * FROM blogposts WHERE id='$post_id'");
+        $no_post = $fetch_post->num_rows;
+        if($no_post > 0){
+            $post_data = $fetch_post->fetch_assoc();
+            $author = getAuthorByID($post_data['author_id'], $conn);
+            $post_data['author'] = $author;
+            $response = [
+                'status' => 'success',
+                'status_code' => '1',
+                'message' => $no_post . ' fetched successfully.',
+                'post' => $post_data
+            ];
+        }else{
+            $response = [
+                'status' => 'error',
+                'status_code' => '2',
+                'message' => 'Post not found!'
+            ];
+        }
+        
     }else{
         // Apart from fetch posts, every other operation requires the access token
         if(isset($_POST['token']) and $_POST['token'] != ''){
@@ -57,7 +79,94 @@ include_once 'server_connection.php';
                         'message' => 'Empty fields detected! Please enter neccessary post details.'
                     ]; 
                 }
+            }else if($action == 'edit_post'){
+                $post_id = $_POST['post_id'];
+                $token = $_POST['token'];
+                $title = $_POST['title'];
+                $body = $_POST['body'];
+                $fetch_post = $conn->query("SELECT * FROM blogposts WHERE id='$post_id'");
+                $no_post = $fetch_post->num_rows;
+                if($no_post > 0){
+                    $post_data = $fetch_post->fetch_assoc();
+                    $author_id = getAuthorID($token, $conn);
+                    if($post_data['author_id'] == $author_id){
+                        //  Update Post
+                        $update = $conn->query("UPDATE blogposts SET title='$title', body='$body' WHERE id='$post_id'");
+                        if($update){
+                            $response = [
+                                'status' => 'success',
+                                'status_code' => '1',
+                                'message' => 'Post updated successfully!'
+                            ];
+                        }else{
+                            $response = [
+                                'status' => 'error',
+                                'status_code' => '4',
+                                'message' => 'Post could not be updated due to an un-expected error!'
+                            ];
+                        }
+                    }else{
+                        // Un-authorized Author
+                        $response = [
+                            'status' => 'error',
+                            'status_code' => '3',
+                            'message' => 'You do not have permission to edit this post! Only the owner can do so.'
+                        ];
+                    }
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'status_code' => '2',
+                        'message' => 'Post not found!'
+                    ];
+                }
+            }else if($action == 'delete_post'){
+                $post_id = $_POST['post_id'];
+                $token = $_POST['token'];
+                $fetch_post = $conn->query("SELECT * FROM blogposts WHERE id='$post_id'");
+                $no_post = $fetch_post->num_rows;
+                if($no_post > 0){
+                    $post_data = $fetch_post->fetch_assoc();
+                    $author_id = getAuthorID($token, $conn);
+                    if($post_data['author_id'] == $author_id){
+                        //  Update Post
+                        $delete = $conn->query("DELETE blogposts WHERE id='$post_id'");
+                        if($delete){
+                            $response = [
+                                'status' => 'success',
+                                'status_code' => '1',
+                                'message' => 'Post deleted successfully!'
+                            ];
+                        }else{
+                            $response = [
+                                'status' => 'error',
+                                'status_code' => '4',
+                                'message' => 'Post could not be deleted due to an un-expected error!'
+                            ];
+                        }
+                    }else{
+                        // Un-authorized Author
+                        $response = [
+                            'status' => 'error',
+                            'status_code' => '3',
+                            'message' => 'You do not have permission to delete this post! Only the owner can do so.'
+                        ];
+                    }
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'status_code' => '2',
+                        'message' => 'Post not found!'
+                    ];
+                }
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'status_code' => '5',
+                    'message' => 'Invalid Request! Request not understood or missing the right credentials.'
+                ];
             }
+                
         }else{
             $response = [
                 'status' => 'error',
