@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="access_token" content="">
+    <title>ADD a Post</title>
+</head>
+<body>
+    <input type="hidden" id="access_token">
+    <div id="token" style="display: none;"></div>
+    
+    <div>
+        <form id="frm_addpost">
+            <input type="text" id="post_title"> <br>
+            <textarea id="post_body" cols="30" rows="10"></textarea> <br>
+            <button type="submit">
+                Save Post
+            </button>
+        </form>
+    </div>
+
+
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <script>
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost/api_demo/session.php',
+            data: {action: 'get_session'},
+            dataType: 'json',
+            success: function (response) {
+                if(response.status == 'success'){
+                    // Storing on a meta Element
+                    $('meta[name=access_token]').attr('content', response.access_token);
+                    // Storing it input Element
+                    $('#access_token').val(response.access_token);
+                    // Storing it on a div
+                    $('#token').text(response.access_token);
+                }else{
+                    // location.href = 'http://localhost/api_demo/login.html';
+                }
+                // console.log(response);
+            }
+        });
+
+        $('#frm_addpost').on('submit', function (e) {
+            e.preventDefault();
+            $title = $('#post_title').val();
+            $body = $('#post_body').val();
+            // $token = $('meta[name=access_token]').attr('content');
+            // $token = $('#token').text();
+            $token = $('#access_token').val();
+
+            let dataObj = {
+                action: 'save_post',
+                title: $title,
+                body: $body,
+                token: $token
+            }
+
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost/api_demo/api/manage_post.php',
+                data: dataObj,
+                dataType: 'json',
+                success: function (response) {
+                    if(response.status == 'success'){
+                        alert(response.message);
+                    }else{
+                        alert(response.message);
+                    }
+                    console.log(response);
+                }
+            });
+        });
+
+
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost/api_demo/api/manage_post.php',
+                data: {action:'fetch_posts'},
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+    </script>
+</body>
+</html>
