@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../chibros/css/post.css">
+</head>
+<body>
+    <div id="form_container">
+        <header>
+            <h1>MAKE YOUR POST HERE</h1>
+            <hr>
+        </header>
+        <form id="post_form">           
+            <div class="form_input">
+                <input type="text"placeholder="Title:" id="title">
+            </div>
+            <div class="form_input">
+                <label for="textarea">
+                    <strong>Comment:</strong>
+                </label>
+                <br>
+                <textarea id="textarea" cols="60" rows="20"placeholder="Write here...">
+                    
+                </textarea>
+            </div>
+            <div class="form_input">
+                <input type="range"value="50" id="rng" >
+            </div>
+            <div class="form_input">
+                <button type="submit"id="btn_post">
+                    POST
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/post.js"></script>
+</body>
+</html>
