@@ -7,8 +7,13 @@
         },
         dataType:"json",
         success:function(response){
-            console.log(response); 
-            $("#post_form").submit(function(e){
+            Let session_memory=$("memory_sesssion").text(response);
+        },
+        error:function(xhr, status, msg){
+                console.log(msg);                    
+        } 
+        });
+    $("#post_form").submit(function(e){
                             var token=response;       
                             $title=$("title").val();
                             $body=$("textarea").val();     
@@ -30,9 +35,3 @@
                                 } 
                             });
                     });
-        },
-        error:function(xhr, status, msg){
-                console.log(msg);                    
-        } 
-        });
-    
