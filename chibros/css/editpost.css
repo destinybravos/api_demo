@@ -1,4 +1,4 @@
-#form_container{
+#form_edit_container{
     border:thin solid lightgreen;
     max-width: 700px;
     margin:auto;  
@@ -20,6 +20,9 @@ header h1{
 .frm_input{
     margin:20px 40px;    
 }
+#edit-id{
+    width:5%;
+}
 input{
     width:70%;
     padding:10px;
@@ -37,12 +40,12 @@ input:hover{
     line-height: 40px;
     color:lightgrey;
 }
-#textarea{
+#textarea_edit{
     width: 98%;
     height: 50vh;     
     resize:none;    
 }
- #textarea:hover{     
+ #textarea_edit:hover{     
     box-shadow:0px 0px 10px skyblue;
     transition:1s;    
 }

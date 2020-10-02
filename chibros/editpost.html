@@ -4,41 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../chibros/css/post.css">
+    <link rel="stylesheet" href="../chibros/css/editpost.css">
 </head>
 <body>
     <input type="hidden"id="memory_session">
-    <div id="form_container">
+    <div id="form_edit_container">
         <header>
             <h1>MAKE YOUR POST HERE</h1>
             <hr>
         </header>
-        <form id="post_form">           
+        <form id="post_form">
+            <div class="form_input">
+                <input type="text"placeholder="ID:" id="edit-id" required>
+            </div>           
             <div class="form_input">
                 <input type="text"placeholder="Title:" id="title" required>
             </div>
             <div class="form_input">
-                <label for="textarea">
+                <label id="lbl_textArea" for="textarea">
                     <strong>Comment:</strong>
                 </label>
                 <br>
-                <textarea id="textarea" cols="10" rows="0"placeholder="Write here..."required>
+                <textarea id="textarea_edit" cols="10" rows="0"placeholder="Write here..."required>
                     
                 </textarea>
             </div>
             <div class="form_input">
                 <input type="range"value="50" id="rng" >
             </div>
-            <div class="form_input">
-                <button type="submit"id="btn_post"class="btn_buttons">
-                    POST
-                </button>   
+            <div class="form_input">                          
+                <button type="submit" id="btn_edit_post"class="btn_buttons">
+                    Edit post
+                </button>  
                 <button id="btn_view_post"class="btn_buttons">
                   view posts
-                </button>
-                <button id="btn_edit_post"class="btn_buttons">
-                    Edit post
-                </button>            
+                </button>  
+                <button type="submit"id="btn_delete"class="btn_buttons">
+                   Delete Post
+                </button>        
             </div>
         </form>
         
@@ -46,6 +49,6 @@
 
 
     <script src="js/jquery.js"></script>
-    <script src="js/post.js"></script>
+    <script src="js/editpost.js"></script>
 </body>
 </html>
