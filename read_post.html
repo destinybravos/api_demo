@@ -18,18 +18,17 @@
     </header>
 
     <div class="container m-auto p-3">
-        <h5 class="mb-5 mt-1">
-            <em>
-                <strong>
-                    <small>
-                        <span id="no_posts"></span> Articles
-                    </small>
-                </strong>
-            </em>
-        </h5>
         <div class="container">
-            <div class="row" id="post_list">
-                <!-- The List/Cards For Our Post will be injected here by JS -->
+            <div class="row" >
+                <div class="col-md-12">
+
+                    <div class="card">
+                        <div class="card-body" id="postDetails">
+                            
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
         
@@ -41,42 +40,40 @@
 
     <script>
         function fetchPost(){
+            // Geting the Post ID from the URL
+            let pageUrl = new URL(window.location.href);
+            let id  = pageUrl.searchParams.get('post_id');
             $.ajax({
                 type: 'post',
                 url: 'http://localhost/api_demo/api/manage_post.php',
-                data: { action: 'fetch_posts' },
+                data: { action: 'read_post', post_id:id },
                 dataType: 'json',
                 cache: false,
                 success: function(res){
                     if(res.status === 'success'){
-                        $('#no_posts').text(res.no_posts);
-                        splitPostArray(res.posts)
+                        displayPost(res.post);
+                    }else{
+                        alert(res.message);
+                        location.href = 'index.html';
                     }
                 }
             })
         }
         fetchPost();
 
-        function splitPostArray(postArray){
-            let post_card='';
-            postArray.forEach(function(post){
-                console.log(post);
-                post_card += `<div class="col-md-3 mb-3">
-                    <div class="card">
-                        <a href="read_post.html?post_id=${post.id}" class="card-body">
-                            <h3 class="card-title"> ${post.title} </h3>
-                            <small>By: ${post.author.firstname} ${post.author.lastname}</small>
-                        </a>
-                    </div>
-                </div>`;
-            });
+        function displayPost(post2Display){
+            let postContent = `
+                            <h2>${post2Display.title}</h2>
+                            <em><small class="text-primary">By: ${post2Display.author.firstname} ${post2Display.author.lastname}</small></em>
+                            <p class="my-2">
+                                ${post2Display.body}
+                            </p>
+                            `;
+            
 
-            $('#post_list').html(post_card);
+            $('#postDetails').html(postContent);
         }
 
-        // setInterval(function(){
-        //     fetchPost();
-        // }, 60000);
     </script>
 </body>
 </html>
