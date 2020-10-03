@@ -93,7 +93,7 @@ var token = '';
             dataType: 'json',
             success: function (response) {
                 if(response.status == 'success'){
-                    window.location.href = 'http://localhost/api_demo/endless/index.html';
+                    window.location.href = 'http://localhost/api_demo/endless/addpost.html';
                 }else{
                     alert('An Unexpeted Error');
                 }
@@ -127,3 +127,17 @@ var token = '';
 
         return token;
     }
+
+
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+    
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.body.style.backgroundColor = "white";
+    } 

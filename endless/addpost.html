@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AddPost</title>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+                <aside id="right"><strong>ENDLESS API</strong></aside>
+                <aside id="left"><a href="#">Sign out</a></aside>
+        </nav>
+    </header>
+
+    <div id="mySidenav" class="sidenav">
+      <div id="userNavInfo">
+        <img src="images/fit4.jpg" alt="" />
+        <p>
+            <span id="admin_name">Hi Welcome</span>
+            <span id="admin_name"><></span>
+            
+        </p>
+    </div>
+            <button type="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</button> 
+            <a href="#">DashBoard</a>
+            <a href="#">Add Post</a>
+            <a href="#">Edit Post</a>
+            <a href="#">Delete Post</a>
+            <a href="#">
+                <button id="hhh">
+                    My Token
+                  </button>
+            </a>
+          </div>
+          
+          <span id="open" onclick="openNav()">open</span>
+          
+          
+          <div id="main">
+            ... 
+            
+          </div> 
+
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <script src="js/assign.js"></script>
+
+    <script>
+      var $token;
+
+
+    $.ajax({
+      type:'post',
+      url:'http://localhost/api_demo/session.php',
+      dataType:'json',
+      data:{
+        action:'get_session'
+      },
+      success: function (response) {
+          if (response.status==='success') {
+            $token = response.access_token;
+          }
+          
+        }
+    });
+
+
+    $('#hhh').on('click', function(){
+      alert($token)
+    })
+    </script>
+</body>
+</html>
