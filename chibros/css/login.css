@@ -1,0 +1,39 @@
+#form_container{
+    border:thin solid lightgreen;
+    max-width: 500px;
+    margin:auto;  
+    padding:0px 20px 40px; 
+    height:300px;
+    margin-top:130px;    
+    border-radius:10px;      
+}
+header hr{
+    width:70%;
+    color:white;
+}
+header h1{
+   text-align:center;
+}
+.frm_input{
+   margin:20px 40px;   
+}
+input{
+   width:100%;
+   padding:10px;
+   box-shadow:0 0 1px grey;
+   border:none;
+   border-radius:5px;       
+}
+input:hover{
+   box-shadow:0 0 10px skyblue;
+   transition:1s;
+}
+#btn_login{
+    padding:10px;
+    width:100px;
+    background:lightgreen;
+    border:none;
+    box-shadow:0 0 1px lightgreen;
+    border-radius:8px;
+    color:white;
+}
