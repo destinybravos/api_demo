@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procity Blog Website</title>
+    <link rel="stylesheet" href="http://localhost/tutorial_repo/bootstrap4/css/bootstrap.css">
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    <header class="container-fluid bg-dark py-1 mb-5">
+        <div class="container">
+            <h3 class="text-light">
+                <i class="fa fa-comments"></i> Procity Blog
+            </h3>
+        </div>
+    </header>
+
+    <div class="container m-auto p-3">
+        <h5 class="mb-5 mt-1">
+            <em>
+                <strong>
+                    <small>
+                        <span id="no_posts"></span> Articles
+                    </small>
+                </strong>
+            </em>
+        </h5>
+        <div class="container">
+            <div class="row" id="post_list">
+                <!-- The List/Cards For Our Post will be injected here by JS -->
+            </div>
+        </div>
+        
+    </div>
+    
+
+    
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+
+    <script>
+        function fetchPost(){
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost/api_demo/api/manage_post.php',
+                data: { action: 'fetch_posts' },
+                dataType: 'json',
+                cache: false,
+                success: function(res){
+                    if(res.status === 'success'){
+                        $('#no_posts').text(res.no_posts);
+                        splitPostArray(res.posts)
+                    }
+                }
+            })
+        }
+        fetchPost();
+
+        function splitPostArray(postArray){
+            let post_card='';
+            postArray.forEach(function(post){
+                console.log(post);
+                post_card += `<div class="col-md-3 mb-3">
+                    <div class="card">
+                        <a href="read_post.html?post_id=${post.id}" class="card-body">
+                            <h3 class="card-title"> ${post.title} </h3>
+                            <small>By: ${post.author.firstname} ${post.author.lastname}</small>
+                        </a>
+                    </div>
+                </div>`;
+            });
+
+            $('#post_list').html(post_card);
+        }
+
+        // setInterval(function(){
+        //     fetchPost();
+        // }, 60000);
+    </script>
+</body>
+</html>
