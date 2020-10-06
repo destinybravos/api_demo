@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Posts</title>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        <header>
+                <nav id="first">
+                    <aside id="right"><strong>ENDLESS API</strong></aside>
+                    <aside id="left"><a href="logout.php">Sign out</a></aside>
+                </nav>
+                
+         </header>
+        <nav id="second">
+            <a href="add_post.html">DashBoard</a>
+            <a href="posts.html">Add Post</a>
+            <a href="edit_post.html">Edit Post</a>
+            <a href="delete_post.html">Delete Post</a>
+            <a href="#">
+                <button id="btn1">
+                    My Token
+                </button>
+            </a>
+        </nav>  
+
+        <h1  style="margin:40px; color: aqua;"><marquee direction="" behavior="alternate" >Make A Post Here</marquee></h1>
+
+        <div id="contain">
+                <div id="frmcont">
+                    <fieldset>
+                        <legend ><h3>Add Posts here</h3></legend>
+                        <form id="frmpost" name="frmpost">
+                            <label > Post Title</label>
+                                <input type="text" id="posttitle" name="posttitle" class="textbox"> <br>
+                                <label >Body Of Post</label>
+                                <textarea id="post_body" name="post_body" class="textbox" cols="30"  rows="10" style="resize: none;"></textarea> <br>
+                                <button id="btnsub" type="submit">
+                                    Save Post
+                                </button>
+                            </form>
+                     </fieldset>
+                </div>
+        </div>
+
+
+
+     <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <script src="js/assign.js"></script>
+
+    <script>
+         var $token;
+
+
+$.ajax({
+  type:'post',
+  url:'http://localhost/api_demo/session.php',
+  dataType:'json',
+  data:{
+    action:'get_session'
+  },
+  success: function (response) {
+      if (response.status==='success') {
+        $token = response.access_token;
+        // console.log(response);
+        // $('#admin_name').html(response.au)
+      }else{
+        location.href='http://localhost/api_demo/endless/register.html';
+      }
+      
+    }
+});
+$('#btn1').on('click', function(){
+      alert($token)
+    });
+
+
+// add post
+function clearform() {
+    document.forms['frmpost']['posttitle'].value='';
+    document.forms['frmpost']['post_body'].value='';
+};
+
+$('#frmpost').on('submit', function (e) {
+            e.preventDefault();
+            
+            $title = $('#posttitle').val();
+            $body = $('#post_body').val();
+            $token = $token;
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost/api_demo/api/manage_post.php',
+                data:{
+                action: 'save_post',
+                title: $title,
+                body: $body,
+                token: $token
+            },
+                dataType: 'json',
+                success: function (response) {
+                    if(response.status == 'success'){
+                        console.log(response);
+                        alert(response.message);
+                       clearform();
+                    }else{
+                        alert(response.message);
+                    }
+                    // console.log(response);
+                }
+
+            });
+            
+        });
+
+
+    
+    </script>
+</body>
+</html>

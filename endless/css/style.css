@@ -4,7 +4,7 @@
 }
 
 #container{
-    margin: 20vh auto;
+    margin: 15vh auto;
     background-color: azure;
     max-width: 400px;
     min-height: 300px;
@@ -59,31 +59,31 @@ header{
     
 
 }
- nav{
-    width: 50%;
+ #first{
+    width: 80%;
     margin: 0 auto;
     display: flex;
    
     text-align: center;
 }
-nav aside{
+#first aside{
     margin-top: 15px;
     display: inline-block;
 }
 
-nav #right{
+#first #right{
     text-align: left;
     flex: 1;
     font-size: 18px;
 
 }
 
-nav #left{
+#first #left{
     text-align: right;
     flex: 1;
     
 }
-nav a{
+#first a{
     text-decoration: none;
     color: white;
     background-color: black;
@@ -91,70 +91,84 @@ nav a{
     border-radius: 5px;
 }
 
-
-.sidenav {
-    height: 100%;
-    width: 20%;
-    display: block; 
-    position: fixed; 
-    z-index: 1; 
-    top: 0; 
-    left: 0;
-    background-color:tomato;
-    overflow-x: hidden; 
-    padding-top: 60px; 
-    transition: 0.5s; 
+#second{    
+    width: 100%;
+    padding-top: 9px;
+    border-bottom: 1px solid;
+    min-height: 30px;
+    text-align: center;
+    background-color:aqua;
 }
 
-
-.sidenav a {
-    margin-top: 10px;
-    padding: 8px 8px 8px 32px;
+#second a{
     text-decoration: none;
-    font-size: 18px;
+    padding:  11px;
     color: black;
-    display: block;
-    transition: 0.3s;
+   
+
 }
-
-
-.sidenav a:hover {
-    color: #f1f1f1;
-    background-color: black;
-}
-
-.closebtn{
-    border:none;
+#second a:hover{
+    background-color: tomato;
     color: white;
+}
+
+#btn1{
+    background-color: inherit;
+    border: none;
+}
+#btn1:hover{
     background-color: tomato;
 }
 
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-#open{
-    background-color: black;
-    margin-top: 50px;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
+#contain{
+    margin:40px auto;
+    font-style: italic;
+    background-color: aqua;
+    max-width: 500px;
+    min-height: 200px
 }
 
+#frmpost{
+    padding: 20px;
 
-#main {
-    transition: margin-left .5s;
+}
+
+#frmedit{
     padding: 20px;
 }
 
-@media screen and (max-width: 450px) {
-    .sidenav {padding-top: 15px;
-    }
-    .sidenav a {font-size: 18px;
-    }
-}
+ #btnsub{
+     padding: 10px;
+     border: none;
+     background-color: white;
+     border-radius: 5px;
+ }
+ #txt{
+     display:flex;
+    
+ }
+ .tex{
+     flex: 1;
+     padding: 6px 0;
+     margin-right: 6px;
+ }
+
+ body{
+     background-color: blueviolet;
+ }
+
+ #contains{
+     margin: 30px auto;
+     max-width: 300px;
+     min-height: 100px;
+     background-color: aqua;
+     border-radius: 10px;
+ }
+
+ #form_delete{
+     padding: 30px;
+ }
+ #post_id{
+     padding: 8px 0;
+     margin-right: 7px;
+ }

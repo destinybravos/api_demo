@@ -93,7 +93,7 @@ var token = '';
             dataType: 'json',
             success: function (response) {
                 if(response.status == 'success'){
-                    window.location.href = 'http://localhost/api_demo/endless/addpost.html';
+                    window.location.href = 'http://localhost/api_demo/endless/add_post.html';
                 }else{
                     alert('An Unexpeted Error');
                 }
