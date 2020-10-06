@@ -105,5 +105,5 @@ $("#validateform").on("submit",function(e){
         dataType:'json'
        
     });
-    console.log(e);
-});
+
+
