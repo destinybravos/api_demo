@@ -1,4 +1,4 @@
-$("#reg_form").on("submit",function(e){     
+$("#reg_form").on("submit", function(e){     
     e.preventDefault();
         $fname=$("#fname").val();
         $lname=$("#lname").val();
@@ -15,8 +15,8 @@ $("#reg_form").on("submit",function(e){
         phone:$phone,
         password:$pass
     },
-    dataType: 'json',
-    success:function(response){  
+   dataType: 'json',
+    success:function(response){ 
         if(response.status == 'success'){        
             alert(response.message);
             window.location.href = 'http://localhost/api_demo/chibros/login.html';

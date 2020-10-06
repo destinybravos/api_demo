@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../chibros/css/deletepost.css">
+</head>
+<body>
+    <input type="hidden"id="memory_session">
+    <div id="form_delete_container">
+        <header>
+            <h1>DELETE A POST</h1>
+            <hr>
+        </header>
+        <form id="delete_form">
+            <div class="form_input">
+                <input type="text"placeholder="ID:" id="delete_id" required>
+            </div>           
+                <button type="submit"id="btn_delete"class="btn_buttons">
+                   Delete Post
+                </button>        
+            </div>
+        </form>        
+    </div>
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/deletepost.js"></script>
+</body>
+</html>
