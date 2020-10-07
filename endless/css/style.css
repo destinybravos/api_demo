@@ -143,6 +143,12 @@ header{
      background-color: white;
      border-radius: 5px;
  }
+ #btnedit{
+    padding: 10px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+ }
  #txt{
      display:flex;
     
