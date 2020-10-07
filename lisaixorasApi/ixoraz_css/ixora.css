@@ -183,8 +183,7 @@ form{
     padding-top: 22px;
   
 }
-#pass
-{
+#valipass{
     display: block;
     margin:40px auto 0;
     padding: 10px;
@@ -192,7 +191,7 @@ form{
     text-align: left;
     border-radius: 8px;
 }
-#email{
+#usern{
     display: block;
     margin:34px auto 0;
     padding: 10px;
@@ -279,6 +278,7 @@ form{
     color: white;
     margin: 0 auto 0;
     display: block;
+    border: none;
     padding: 8px;
     text-decoration: none;
     background-color: rgb(148, 34, 34);

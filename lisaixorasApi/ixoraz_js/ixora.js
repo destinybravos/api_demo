@@ -34,11 +34,6 @@ $(document).ready(function(){
 
     });
 
-    $("#btnlgn").click(function(){
-    if("#cpass"==="#regpass"){
-     console.log("submit?");}
-        });
-
 
         $('#regform').on('submit',function (x) {
             x.preventDefault();
@@ -92,18 +87,66 @@ function registerindividual(userdata){
 // to enter dashboard through login page//
 $("#validateform").on("submit",function(e){     
     e.preventDefault();
-
     $userid=$("#usern").val();        
     $pass=$("#valipass").val();
-    $.ajax({
-        type:"post",
-        url:"http://localhost/api_demo/api/login.php",
-        data:{
+
+    let ldatasend={
         user_id:$userid,        
         password:$pass
-        },
-        dataType:'json'
-       
-    });
+    }
+    loginindividual (ldatasend);
+});
 
 
+function loginindividual (logindata){
+$.ajax({
+    type:"post",
+    url:"http://localhost/api_demo/api/login.php",
+    data:logindata,
+    dataType:'json',
+    success: function (response) {
+        alert(response.message),
+        console.log(response);
+        if (response.status== "success") {
+            let ixoratoken = response.user.access_token;
+            console.log(ixoratoken);
+            setting_session(ixoratoken);
+        }
+    }
+ });
+};
+
+function setting_session(gottentoken) {
+    $.ajax({
+        type:"post",
+        url:" http://localhost/api_demo/session.php",
+        data: {
+               action:'set_session',
+               token:gottentoken 
+                },
+        dataType:'json',
+        success: function (response) {
+            console.log(response);
+            window.location.href = 'http://localhost/api_demo/lisaixorasApi/dashboard.html';
+        }
+
+        });
+}
+
+
+$("#apst").click(function(){
+         console.log("freed");
+
+        $.ajax({
+            type:"post",
+            url:" http://localhost/api_demo/api/manage_post.php",
+            data: {
+                action: 'save_post', 
+                title: 'Post Title/Headline', 
+                body: 'Post Body/Article', 
+                token: 'User Access Token', 
+            },
+            dataType:'json',
+        });
+
+        });
