@@ -88,7 +88,6 @@ $('#form1').on('submit', function (x) {
                 // });
 
               store_token(mytoken);
-              retrieve_token(mytoken);
             } else {
                 alert(response.message);
             }
@@ -111,7 +110,7 @@ function store_token(tokenId) {
         dataType: 'json',
         success: function (response) {
             if (response.status == 'success') {
-                
+               window.location.href = 'http://localhost/api_demo/api/skir-tech/pages/home.html' 
             } else {
                 alert('Unexpected Error');
             }
@@ -141,21 +140,17 @@ function store_token(tokenId) {
 // });
 
    ///* ajax request to retrieve token back from session*///
-function retrieve_token(tokentosave) {
     $.ajax({
         type: 'post',
         url: 'http://localhost/api_demo/session.php',
         data:  {action: 'get_session'},
         dataType: 'json',
-        /* async: false, /* whats the function fo this line */
+        async: false, /* whats the function fo this line */
         success: function (response) {
             if (response.status == 'success') {
                 let token = response.access_token;
-    
                 // save the token with an input element
-    
-                $('#access_token').val(token);
-                window.location.href = 'http://localhost/api_demo/api/skir-tech/pages/home.html'
+               $('#mytoken').val(token);
             } else {
                 location.href = 'http://localhost/api_demo/login.html';
             }
@@ -164,15 +159,14 @@ function retrieve_token(tokentosave) {
             console.log(msg);
         },
     });
-}
    
 
 $('#formadd').on('submit', function (e) {
-    e.preventDefault;
+    e.preventDefault();
 
-     $title = $('#title').val();
-     $body = $('#textarea').val();
-     $token = $('#access_token').val();
+    $title = $('#title').val();
+    $body = $('#textarea').val();
+    $token = $('#mytoken').val();
 
    let postdata = {
         action: 'save_post', 
