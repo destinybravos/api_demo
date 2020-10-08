@@ -61,12 +61,3 @@
       text-align: left;
     }
   }  
-
-  /*----------------------------------------------------------------------*/
-  #form_reg{
-    margin-top: 100px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #f7f7f7;
-  }

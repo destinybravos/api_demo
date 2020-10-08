@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../chibros/css/post.css">
 </head>
 <body>
-    <input type="hidden"id="memory_session">
     <div id="form_container">
         <header>
             <h1>MAKE YOUR POST HERE</h1>
@@ -15,14 +14,14 @@
         </header>
         <form id="post_form">           
             <div class="form_input">
-                <input type="text"placeholder="Title:" id="title" required>
+                <input type="text"placeholder="Title:" id="title">
             </div>
             <div class="form_input">
                 <label for="textarea">
                     <strong>Comment:</strong>
                 </label>
                 <br>
-                <textarea id="textarea" cols="10" rows="0"placeholder="Write here..."required>
+                <textarea id="textarea" cols="60" rows="20"placeholder="Write here...">
                     
                 </textarea>
             </div>
@@ -30,18 +29,11 @@
                 <input type="range"value="50" id="rng" >
             </div>
             <div class="form_input">
-                <button type="submit"id="btn_post"class="btn_buttons">
+                <button type="submit"id="btn_post">
                     POST
-                </button>   
-                <button id="btn_view_post"class="btn_buttons">
-                  view posts
                 </button>
-                <button id="btn_edit_post"class="btn_buttons">
-                    Edit post
-                </button>            
             </div>
         </form>
-        
     </div>
 
 

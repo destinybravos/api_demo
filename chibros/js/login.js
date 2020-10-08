@@ -22,10 +22,11 @@ $("#login_form").on("submit",function(e){
                 },
                 dataType:"json",
                 success:function(response){
-                    window.location.href="http://localhost/api_demo/chibros/post.html";                 
+                    window.location.href="http://localhost/api_demo/chibros/index.html";                 
                 },
                error:function(xhr, status, msg){
-                    console.log(msg);                    
+                    console.log(msg);
+                    alert(msg);                    
                } 
             });
         }else{

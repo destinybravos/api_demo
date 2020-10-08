@@ -5,7 +5,8 @@
     padding:0px 20px 40px; 
     height:300px;
     margin-top:130px;    
-    border-radius:10px;      
+    border-radius:10px; 
+    background:rgb(175, 120, 120);   
 }
 header hr{
     width:70%;

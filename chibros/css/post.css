@@ -3,9 +3,9 @@
     max-width: 700px;
     margin:auto;  
     padding:0px 20px 40px; 
+    height: 630px;
     margin-top:70px;
     border-radius:10px;
-    background:rgb(175, 120, 120);
 }
 
 header hr{
@@ -15,13 +15,12 @@ header hr{
 }
 header h1{
     text-align:center;
-    color:lightgrey;
 }
 .frm_input{
     margin:20px 40px;    
 }
 input{
-    width:70%;
+    width:95%;
     padding:10px;
     box-shadow:0 0 1px grey;
     border:none;
@@ -35,12 +34,11 @@ input:hover{
  label strong{
     font-size:20px;
     line-height: 40px;
-    color:lightgrey;
 }
 #textarea{
     width: 98%;
-    height: 50vh;     
-    resize:none;    
+    text-align:left; 
+    resize:none; 
 }
  #textarea:hover{     
     box-shadow:0px 0px 10px skyblue;
@@ -51,7 +49,7 @@ input[type="range"]{
     max-width: 70%;
  
 }
-.btn_buttons{
+#btn_post{
     width:100px;
     padding:10px;
     margin:5px;
