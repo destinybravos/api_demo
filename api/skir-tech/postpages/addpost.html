@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../fa/css/all.css">
+</head>
+<body>
+    <input type="hidden" id="access_token">
+    <nav id="top_nav">
+        <div id="tnc" class="max_width">
+            <aside>
+                <strong>
+                    <a href="">
+                        Skirt9ja
+                    </a>
+                </strong>
+            </aside>
+            <aside>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-whatsapp"></i>
+            </aside>
+        </div>
+    </nav>
+    <nav id="main_nav">
+        <div id="mnc" class="max_width">
+            <ul>
+                <li id="home">
+                    <a href="../pages/home.html">
+                        HOME
+                    </a>
+                </li>
+                <li id="news">
+                    NEWS
+                </li>
+                <li id="music">
+                    MUSIC
+                </li>
+                <li id="video">
+                    VIDEOS
+                </li>
+                <li id="more">
+                    MORE
+                </li>
+            </ul>
+            <aside>
+               <div>
+                    <a href="login.html">
+                        LOGIN
+                    </a>
+               </div>
+            </aside>
+        </div>
+    </nav>
+    <div id="full_page">
+        <aside>
+            <div>
+                <ul id="post_data">
+                    <li>
+                       <a href="mypost.html" id="mypost">
+                        My Post
+                       </a>
+                    </li>
+                    <li>
+                       <a href="addpost.html" id="addpost">
+                        Add Post
+                       </a>
+                    </li>
+                    <li>
+                       <a href="editpost.html" id="editpost">
+                        Edit Post
+                       </a>
+                    </li>
+                    <li>
+                       <a href="deletepost.html" id="deletepost">
+                        Delete Post
+                       </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <div>
+            <div id="b">
+                <form action="" method="post" id="formadd">
+                    <div>
+                        <input type="text" placeholder="title" id="title">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Author" id="author">
+                    </div>
+                    <div>
+                        <TEXtarea id="textarea">
+
+                        </TEXtarea>
+                    </div>
+                    <div style="text-align: right;">
+                        <button type="submit" id="submit">
+                            SUBMIT
+                        </button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>
