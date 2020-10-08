@@ -181,8 +181,22 @@ $('#formadd').on('submit', function (e) {
         data: postdata,
         dataType: 'json',
         success: function (response) {
+            if(response.status == 'success'){
+                alert(response.message);
+            }else{
+                alert(response.message);
+            }
+            // console.log(response);
+        }
+    })
+
+    $.ajax({
+        type: 'post',
+        url: 'http://localhost/api_demo/api/manage_post.php',
+        data: { action: 'fetch_posts'},
+        dataType: 'json',
+        success: function (response) {
             console.log(response)
-            
         }
     })
 });
