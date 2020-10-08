@@ -4,8 +4,9 @@ include_once 'server_connection.php';
 
     // Initialize response array
     $response = array();
-    
+
     $action = $_POST['action'];
+    echo $action2 = isset($_GET['action'])? $_GET['action'] :'' ;
 
     if($action === 'fetch_posts'){
         $posts = array();
