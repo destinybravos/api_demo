@@ -33,9 +33,6 @@
     
 }
 
-.textbox:hover{
-    box-shadow: 0 0 px black;
-}
 
 #form-group{
     margin: 20px;
@@ -125,7 +122,8 @@ header{
     font-style: italic;
     background-color: aqua;
     max-width: 500px;
-    min-height: 200px
+    min-height: 200px;
+    border-radius: 20px;
 }
 
 #frmpost{
@@ -142,6 +140,10 @@ header{
      border: none;
      background-color: white;
      border-radius: 5px;
+ }
+
+ #frmcont{
+     padding:  20px;
  }
  #btnedit{
     padding: 10px;
@@ -177,4 +179,147 @@ header{
  #post_id{
      padding: 8px 0;
      margin-right: 7px;
+ }
+
+#first1{
+    width: 100%;
+    min-height:20px;
+    background-color: black;
+    display: flex;
+}
+
+#first1 aside{
+    padding: 6px;
+}
+
+#side1{
+    flex: 1;
+    text-align: left;
+    margin-left: 60px;
+}
+#side2{
+    flex: 1;
+    text-align: right;
+
+}
+
+.fa-phone-volume{
+    padding-left: 20px;
+}
+
+.fa-facebook ,
+.fa-instagram ,
+.fa-twitter,
+.fa-whatsapp{
+    padding: 0 5px;
+}
+
+
+#sec3{
+    flex: 1;
+    margin-right: 6px;
+    text-align: right;
+}
+#sec3 input{
+    padding: 6px;
+    border: none;
+    color: aqua;
+    border-bottom: 2px solid ;
+    background-color: transparent;
+}
+
+#btnsearch{
+    padding: 5px;
+}
+
+#last{
+    width: 100%;
+    min-height: 20px;
+    background-color: tomato;
+    display: flex;
+}
+
+#pan1{
+    flex: 1;
+    margin-left: 70px;
+    padding: 8px;
+}
+
+#pan2{
+    flex: 1;
+}
+ span{
+     padding: 9px 3px;
+ }
+#pan2 a{
+    text-decoration: none;
+    color: aqua;
+    padding:  5px 9px ;
+}
+#log{
+    font-style: italic;
+    color: white !important;
+}
+
+
+#reg{
+   color: white !important;
+   font-style: italic;
+   
+}
+#pan2 a:hover{
+    background-color: black;
+    border-radius: 5px;
+}
+
+#card{
+    text-decoration: none;
+    margin: 10vh;
+    width: 15%;
+    background-color: aqua;
+    height: 300px;
+    box-shadow: 0 0 2px black;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 5px;
+}
+#card a{
+    text-decoration: none;
+}
+
+#title{
+    color: black;
+    padding: 13px;
+    font-size: 1.0rem;
+}
+#card:hover{
+    box-shadow: 0 0 30px tomato;
+    background-color: tomato;
+}
+
+#author{
+    font-style: italic;
+}
+ 
+#cardimg{
+    background-image: url('/../api_demo/img/dummy_img.jpg');
+    background-position: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 200px;
+    
+
+}
+
+ @media screen and (max-width:767px){
+     #first1{
+         display:block;
+     }
+     #second2{
+         display: block;
+     }
+     
+     #last{
+         display: block;
+     }
  }

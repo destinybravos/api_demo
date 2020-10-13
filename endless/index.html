@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Endless blog</title>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header style="background-color: inherit;">
+        <div id="first1">
+            <aside id="side1">
+                <i class="fa fa-envelope"> jcchi2004@yahoo.com</i>
+                <i class="fa fa-phone-volume"> 08067134630</i>
+            </aside>
+            <aside id="side2">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-whatsapp"></i>
+            </aside>
+            <section id="sec3"> 
+                <input type="text" placeholder="search...">
+                <button id="btnsearch">
+                    Search
+                </button>
+            </section>
+        </div>
+
+        <div id="last">
+            <span id="pan1"><strong>ENDLESS BLOG</strong> </span>
+            <span id="pan2">
+                <a href="#">HOME</a>
+                <a href="#">ABOUT</a>
+                <a href="#">BLOG</a>
+                <a href="#">CONTACT</a>
+                <a href="login.html" id="log">Login</a>
+                <a href="register.html" id="reg">Register</a>
+            </span>
+        </div>
+    </header>
+    
+    <div id="card">
+        <a href="#">
+            <div id="cardimg">
+
+            </div>
+           
+        </a>
+    </div>
+
+
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <script src="js/assign.js"></script>
+
+    <script>
+                 var $token;
+
+        $.ajax({
+            type:'post',
+            url:'http://localhost/api_demo/session.php',
+            dataType:'json',
+            data:{
+                action:'get_session'
+            },
+            success: function (response) {
+                if (response.status==='success') {
+                    $token = response.access_token;
+                    // console.log(response);
+                }else{
+                    // location.href='http://localhost/api_demo/endless/register.html';
+                }
+                
+                }
+        });
+
+        // $('#btn1').on('click', function(){
+        //     alert($token)
+        // });
+             let fetch ={
+                
+        action: 'fetch_posts',  
+            
+             }
+        $.ajax({
+            type:'post',
+            dataType:'json',
+            url:'http://localhost/api_demo/api/manage_post.php',
+            data:fetch,
+            success: function (response) {
+                let fetch_post = '';
+               response.status.forEach( function (post) {
+                    fetch_post +=`<div id="title"><strong >${post.title}</strong></div> 
+            
+                                    <div id="author">
+                                        ${post.author.firstname}
+                                    </div>`
+                   
+               })
+            }
+        });
+
+    </script>
+</body>
+</html>

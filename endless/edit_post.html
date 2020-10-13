@@ -39,7 +39,7 @@
                                 <label  style="padding: 3px;"> Title</label>
                                 <input type="text" id="edittitle" name="edittitle" class="tex" style="width:90%;">
                                 <label style="padding: 3px;" > Post Id</label>
-                                 <input type="number" id="post_id" name="post_id" class="tex" >
+                                 <input type="number" id="post_id" name="post_id" class="tex">
                             </div>
                                  <br>
                                 <label >Body Of Edit</label>
@@ -54,7 +54,6 @@
                      </fieldset>
                 </div>
         </div>
-
 
 
      <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
@@ -88,9 +87,10 @@ $('#btn1').on('click', function(){
 
 
 //  fetching the post to edit
-$('#frmedit').on('click', function (ev) {
+$('#btnsub').on('click', function (ev) {
     ev.preventDefault();
     $post_id  = $('#post_id').val();
+    
     // $token= $token;
 
 
@@ -107,12 +107,15 @@ $('#frmedit').on('click', function (ev) {
                    token:$token,
 
                    success : function (response){
-                    if (response.status === 'success') {
-                        console.log(response);
-                        
-                        
-                    }
+                       if (response .status === 'success') {
+                        $('#edit_body').val(`${response.post.body}`);
+                     $('#edittitle').val(`${response.post.title}`);
 
+                       }else{
+                           alert(response.message);
+                       }
+
+                    //    console.log(response);
                    }
                });
 
@@ -134,7 +137,6 @@ function clearform() {
 $('#frmedit').on('submit', function(ev) {
     ev.preventDefault();
 
-    $title = $('#post_title').val();
     $post_id  = $('#post_id').val();
     $body  = $('#edit_body').val();
     $title = $('#edittitle').val();
