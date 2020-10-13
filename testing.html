@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Logs</title>
+    <style>
+        .card{
+            background-color: tomato;
+            margin: 20px;
+            width: 200px;
+            min-height: 200px;
+            display: inline-block;
+            padding: 4px 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="content">
+        
+    </div>
+
+    
+
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <script>
+        // let a = '';
+        // let x = [3,4,6,8,9,5,5,3,5,6,3,4,3,4,5,56,7,8];
+
+        // x.forEach(function(element){
+        //     a += `<div class="card"> ${element} </div>`;
+        // });
+
+        // console.log(x);
+        // let a = '';
+        // for (let i = 1; i <= 10; i++) {
+        //     a += `<div class="card"> ${i} </div>`;            
+        // }
+        // document.getElementById('content').innerHTML = a;/
+
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost/api_demo/api/test.php',
+            // data: dataObj,
+            dataType: 'json',
+            success: function (response) {
+                $post_card = '';
+                response.posts.forEach(function (post) {
+                    console.log(post);
+                    $post_card += `<div class="card"> 
+                                    <h4>
+                                        <strong>${post.title}</strong>
+                                    </h4>
+                                    <p>
+                                        ${post.body}
+                                    </p>
+                                    <small>Author: ${post.author.firstname} ${post.author.lastname}</small> <br>
+                                    <small><a href="read_article.html"><i>Read More</i></a></small>
+                                </div>`;
+                });
+
+                $('#content').html($post_card);
+            }
+        });
+
+        
+    </script>
+</body>
+</html>
