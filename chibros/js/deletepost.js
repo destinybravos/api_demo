@@ -26,7 +26,7 @@ $.ajax({
         token: $token
          },
     success:function(response){  
-     console.log(response);                       
+     alert(response.message);                       
     },
     error:function(xhr, status, msg){
         console.log(msg);                     
