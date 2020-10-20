@@ -35,7 +35,7 @@ $.ajax({
     }
 });
 
-$("#btnEdit").on("click", function(e){console.log(e);
+$("#readmore_content").on("click", "#btnEdit", function(e){console.log(e);
 
   alert("helo");
 });
