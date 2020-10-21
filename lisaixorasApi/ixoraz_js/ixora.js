@@ -33,6 +33,12 @@ $(document).ready(function(){
     });
 
     });
+    $("#btnaddpost").click(function(){
+        window.location.href='http://localhost/api_demo/lisaixorasApi/apply_reg.html';
+    });
+    
+    
+    
 
 
         $('#regform').on('submit',function (x) {
@@ -135,18 +141,77 @@ function setting_session(gottentoken) {
 
 
 $("#apst").click(function(){
-         console.log("freed");
+    $("#ipostcont").css("display", "block");
+});
 
-        $.ajax({
-            type:"post",
-            url:" http://localhost/api_demo/api/manage_post.php",
-            data: {
-                action: 'save_post', 
-                title: 'Post Title/Headline', 
-                body: 'Post Body/Article', 
-                token: 'User Access Token', 
-            },
-            dataType:'json',
-        });
+$("#include_post").click (function () {
+ ixorasavepost();
+ displayingPost();
+});
 
-        });
+function ixorasavepost() {
+    
+    $.ajax({
+        type:"post",
+        url:" http://localhost/api_demo/session.php",
+        data: {
+            action: 'get_session' 
+        },
+        dataType:'json',
+        success:function (response) {
+            
+            var id_token = response.access_token;
+            $("#mytoken").val(id_token);
+            insertPostdata();
+
+        },
+        error:function(xhr, status, msg){
+            console.log(msg);                    
+        } 
+    }); 
+}
+
+function insertPostdata() {
+    $posttittle = $("#ixoratitle").val();
+    $postbody = $("#adepost").val();
+    $id_token = $("#mytoken").val();
+    $.ajax({
+        type:"post",
+        url:"http://localhost/api_demo/api/manage_post.php",
+        data: {
+            action: 'save_post', 
+            title: $posttittle, 
+            body: $postbody, 
+            token: $id_token 
+        },
+        dataType:'json',
+        success:function (response) {
+            console.log(response);
+        },
+     error:function(xhr, status, msg){
+            console.log(msg);                    
+        } 
+    });
+    
+}
+
+function displayingPost(){
+    $.ajax({
+        type:"post",
+        url:"http://localhost/api_demo/api/manage_post.php",
+        data: {
+            action: 'fetch_posts'
+        },
+        success:function (resp) {
+            console.log(resp);
+            $("#pulledpost").html(resp);
+        },
+     error:function(xhr, status, msg){
+            console.log(msg);                    
+        } 
+    });
+    
+}
+   
+
+       
