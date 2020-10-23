@@ -1,0 +1,165 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#container{
+    background-color:rgb(13, 13, 48);
+    min-height: 30px;
+}
+#headerlogin{
+    display: flex;
+    max-width: 80%;
+    margin: auto;
+}
+.icons{
+    flex: 1;
+    color: white;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+.icons a{
+    text-decoration: none !important;
+    color: white;
+}
+
+@media screen and (max-width: 768px){
+    #headerlogin{
+        display: block;
+    }
+
+}
+
+#menu{
+    background-color: rgb(5, 5, 99);
+    min-height: 50px;
+    padding: 8px;
+
+}
+#menu li{
+    list-style-type: none;
+    display: inline-block;
+}
+#menu li a{
+    text-decoration: none;
+    color: white !important;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    margin: 5px;
+}
+#menu_ul{
+    text-align: center;
+    margin: 10px 20px;
+}
+
+@media screen and (max-width: 768px){
+    #menu li{
+        display: block;
+        text-align: left;
+        font-size: 1.2rem;
+    } 
+}
+
+#main_body{
+    display: flex;
+    margin: 50px;
+    background-color: white;
+}
+#left_aside{
+    flex: 2;
+    background-color: rgb(152, 152, 194);
+    min-height: 400px;
+    padding: 20px;
+}
+#right_aside{
+    flex: 1;
+    background-color: rgb(155, 162, 219);
+    height: 600px;
+    overflow-y: auto;
+}
+#txtarea{
+    resize: none;
+}
+
+.raside_div{
+    margin: 20px;
+    background-color: rgb(239, 239, 245);
+    min-height: 136.33px;
+}
+.btn_aside{
+    padding: 6px;
+    border: none;
+    color: white;
+    font-size: 0.7rem;
+    margin:20px 10px;
+}
+
+@media screen and (max-width: 768px){
+    #main_body{
+        display: block;
+    }
+    #left_aside{
+        min-height: 200px;
+    }
+    #right_aside{
+        min-height: 200px;
+    }
+
+}
+.gen_divform{
+    background-color: rgb(173, 172, 187);
+    min-height: 200px;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
+}
+.input_box{
+    width: 300px;
+    border: none;
+    margin: 15px 0;
+    padding: 10px;
+    display: block;
+}
+.btn{
+    background-color: rgb(13, 13, 48);
+    padding: 10px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    margin: 5px;
+}
+.body_part{
+    min-height: 500px;
+}
+#foot{
+    background-color: rgb(13, 13, 48);
+    min-height: 55px;
+}
+.content{
+    /* min-height: 100%; */
+    display: inline-block;
+    padding: 20px 10px;
+    max-width: 200px;
+    margin: auto;
+    box-shadow: 0 0 3px black;
+    margin: 5px 5px;
+    vertical-align: top;
+}
+.content a{
+    text-decoration: none;
+}
+.content a :hover{
+    color: rgb(194, 228, 233);
+}
+.pretty{
+    padding: 0.8rem 1.5rem;
+}
+#tit{
+    text-decoration: none !important;
+    /* color: inherit !important; */
+}
+.container1{
+    display: inline-block;
+}

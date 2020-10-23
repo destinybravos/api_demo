@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API DEMO</title>
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body>
+    <div id="container">
+        <div id="headerlogin">
+            <div id="gmail" class="icons">
+                <a href="#"><i class="fa fa-envelope"></i> silversplashstore@yahoo.com</a>
+            </div>
+            <div id="facebook" class="icons">
+                <a href="#"><i class="fab fa-facebook-square"></i> silversplashstore@facebook.com</a>
+            </div>
+            <div id="whatsapp" class="icons">
+                <a href="#"><i class="fab fa-whatsapp"></i> 08034546578</a>
+            </div>
+            <div id="twitter" class="icons">
+                <a href="#"><i class="fab fa-twitter"></i> silversplashstore@twitter.com</a>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <nav id="menu">
+            <ul id="menu_ul">
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+                <span id="guest">
+                    <li>
+                        <a href="login.html">LOGIN</a>
+                    </li>
+                    <li>
+                        <a href="register.html">REGISTER</a>
+                    </li>
+                </span>
+                <span id="admin">
+                    <li>
+                        <a href="add.html">MANAGE POST</a>
+                    </li>
+                </span>
+                <li>
+                    <a href="#">FOLLOW</a>
+                </li>
+                <li>
+                    <a href="posts.html">POSTS</a>
+                </li>
+                <li>
+                    <a href="#">FOREIGN NEWS</a>
+                </li>
+    
+            </ul>
+        </nav>
+    </div>
+
+                <div class="body_part" style="padding: 25px 15px;">
+
+                    <div>
+                        <div id="postDetails">
+                            
+                        </div>
+                    </div>
+
+                </div>
+ 
+    
+    <footer id="foot">
+        <div id="div_foot">
+            hfghdnvb
+        </div>
+    </footer>
+
+    <script>
+        function collectPost(){
+            // Geting the Post ID from the URL
+            let pageUrl = new URL(window.location.href);
+            let id  = pageUrl.searchParams.get('post_id');
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost/api_demo/api/manage_post.php',
+                data: { action: 'read_post', post_id:id },
+                dataType: 'json',
+                cache: false,
+                success: function(res){
+                    if(res.status === 'success'){
+                        displayPost(res.post);
+                    }else{
+                        alert(res.message);
+                        location.href = 'index.html';
+                    }
+                }
+            })
+        }
+        collectPost();
+
+        function displayPost(post2Display){
+            let postContent = `
+                            <h2>${post2Display.title}</h2>
+                            <em><small>By: ${post2Display.author.firstname} ${post2Display.author.lastname}</small></em>
+                            <p class="my-2">
+                                ${post2Display.body}
+                            </p>
+                            `;
+            
+
+            $('#postDetails').html(postContent);
+        }
+
+
+        function checkadmin(){
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost/api_demo/session.php',
+            data: {action: 'get_session'},
+            dataType: 'json',
+            success: function (response) {
+                if(response.status == 'success'){
+                    $('#guest').css({
+                        display: 'none'
+                    });
+                    $('#admin').css({
+                        display: 'inline'
+                    });
+                }else{
+                    $('#admin').css({
+                        display: 'none'
+                    });
+                    $('#guest').css({
+                        display: 'inline'
+                    });
+                }
+                
+            }
+        });
+
+    }
+
+    checkadmin();
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API DEMO</title>
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body>
+    <div id="container">
+        <div id="headerlogin">
+            <div id="gmail" class="icons">
+                <a href="#"><i class="fa fa-envelope"></i> silversplashstore@yahoo.com</a>
+            </div>
+            <div id="facebook" class="icons">
+                <a href="#"><i class="fab fa-facebook-square"></i> silversplashstore@facebook.com</a>
+            </div>
+            <div id="whatsapp" class="icons">
+                <a href="#"><i class="fab fa-whatsapp"></i> 08034546578</a>
+            </div>
+            <div id="twitter" class="icons">
+                <a href="#"><i class="fab fa-twitter"></i> silversplashstore@twitter.com</a>
+            </div>
+        </div>
+    </div>
+    <nav id="menu">
+        <ul id="menu_ul">
+            <li>
+                <a href="index.html">HOME</a>
+            </li>
+            <span id="guest">
+                <li>
+                    <a href="login.html">LOGIN</a>
+                </li>
+                <li>
+                    <a href="register.html">REGISTER</a>
+                </li>
+            </span>
+            <span id="admin">
+                <li>
+                    <a href="add.html">MANAGE POST</a>
+                </li>
+            </span>
+            <li>
+                <a href="#">FOLLOW</a>
+            </li>
+            <li>
+                <a href="posts.html">POSTS</a>
+            </li>
+            <li>
+                <a href="#">FOREIGN NEWS</a>
+            </li>
+
+        </ul>
+    </nav>
+    <div id="main_body">
+        <aside id="left_aside">
+            <form method="post" class="myfrm" id="addpost_frm">
+                <label for="title_input" ><strong><h2>Title</h2></strong></label><br>
+                <input type="hidden" id="access_token">
+                <input type="text" id="title_input" class="input_box" style="width: 500px;">
+                <label for="txtarea" ><strong><h2>Body</h2></strong></label><br>
+                <textarea name="txtarea" id="txtarea" cols="70" rows="15" style="padding: 10px; border: none;"></textarea><br>
+                <button type="submit" class="btn" id="btn_sve">
+                    <i class="fas fa-save"></i>
+                    Post
+                </button>
+            </form>
+        </aside>
+        <aside id="right_aside"  style="padding: 50px">
+            
+        </aside>
+
+    </div>
+
+    <footer id="foot">
+        <div id="div_foot">
+            hfghdnvb
+        </div>
+    </footer>
+
+    <script>
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost/api_demo/session.php',
+            data: {action: 'get_session'},
+            dataType: 'json',
+            success: function (response) {
+                if(response.status == 'success'){
+                   
+                    // Storing it input Element
+                    $('#access_token').val(response.access_token);
+                    
+                }else{
+                    // location.href = 'http://localhost/api_demo/silver_splash/login.html';
+                }
+                // console.log(response);
+            }
+        });
+
+        $('#addpost_frm').on('submit', function (e) {
+            e.preventDefault();
+            $title = $('#title_input').val();
+            $body = $('#txtarea').val();
+            $token = $('#access_token').val();
+
+            let dataObj = {
+                action: 'save_post',
+                title: $title,
+                body: $body,
+                token: $token
+            }
+
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost/api_demo/api/manage_post.php',
+                data: dataObj,
+                dataType: 'json',
+                success: function (response) {
+                    if(response.status == 'success'){
+                        alert(response.message);
+                        $('#addpost_frm').trigger('reset');
+                        displaysidepost();
+                    }else{
+                        alert(response.message);
+                    }
+                    console.log(response);
+                }
+            });
+        });
+
+
+function displaysidepost(){
+    $.ajax({
+        type: 'post',
+        url: 'http://localhost/api_demo/api/manage_post.php',
+        data: {action:'fetch_posts'},
+        dataType: 'json',
+        success: function (response) {
+            // console.log(response);
+            $rsidepost = "";
+            response.posts.forEach(function(element){
+                console.log(element)
+                $rsidepost += `<div id="${element.id}" class="raside_div">
+                <h4><strong> ${element.title} </strong></h4>
+                <a href="edit.html?id=${element.id}" class="btn_aside btn_sve" style="background-color: green; text-decoration: none;">
+                    <i class="fas fa-edit"></i>
+                    Edit Post
+                </a>
+                <button type="button" id="btn_del" class="btn_aside btn_sve" style="background-color: red; text-decoration: none;">
+                    <i class="fas fa-trash-alt"></i>
+                    Delete
+                </button>
+            </div>`;                        
+            });
+            $('#right_aside').html($rsidepost);
+        }
+    });
+}
+    displaysidepost();
+
+
+    function checkadmin(){
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost/api_demo/session.php',
+            data: {action: 'get_session'},
+            dataType: 'json',
+            success: function (response) {
+                if(response.status == 'success'){
+                    $('#guest').css({
+                        display: 'none'
+                    });
+                    $('#admin').css({
+                        display: 'inline'
+                    });
+                }else{
+                    $('#admin').css({
+                        display: 'none'
+                    });
+                    $('#guest').css({
+                        display: 'inline'
+                    });
+                }
+                
+            }
+        });
+
+    }
+
+    checkadmin();
+
+    $('#right_aside').on('click', '#btn_del', function(){
+        let postid = $(this).parent('div').attr('id');
+        let data =  {
+            action: 'delete_post', 
+            post_id: postid, 
+            token: $('#access_token').val(), 
+        }
+        
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost/api_demo/api/manage_post.php',
+            data: data,
+            dataType: 'json',
+            success: function(res){
+                if(res.status == 'success'){
+                    alert(res.message);
+                    displaysidepost();
+                
+                }else{
+                    alert(res.message);
+                }
+
+            }
+        })
+    })
+
+    </script>
+    
+</body>
+</html>

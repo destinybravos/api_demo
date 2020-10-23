@@ -130,7 +130,7 @@ include_once 'server_connection.php';
                     $author_id = getAuthorID($token, $conn);
                     if($post_data['author_id'] == $author_id){
                         //  Update Post
-                        $delete = $conn->query("DELETE blogposts WHERE id='$post_id'");
+                        $delete = $conn->query("DELETE from blogposts WHERE id='$post_id'");
                         if($delete){
                             $response = [
                                 'status' => 'success',

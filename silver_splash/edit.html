@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API DEMO</title>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body>
+    <div id="container">
+        <div id="headerlogin">
+            <div id="gmail" class="icons">
+                <a href="#"><i class="fa fa-envelope"></i> silversplashstore@yahoo.com</a>
+            </div>
+            <div id="facebook" class="icons">
+                <a href="#"><i class="fab fa-facebook-square"></i> silversplashstore@facebook.com</a>
+            </div>
+            <div id="whatsapp" class="icons">
+                <a href="#"><i class="fab fa-whatsapp"></i> 08034546578</a>
+            </div>
+            <div id="twitter" class="icons">
+                <a href="#"><i class="fab fa-twitter"></i> silversplashstore@twitter.com</a>
+            </div>
+        </div>
+    </div>
+    <nav id="menu">
+        <ul id="menu_ul">
+            <li>
+                <a href="index.html">HOME</a>
+            </li>
+            <span id="guest">
+                <li>
+                    <a href="login.html">LOGIN</a>
+                </li>
+                <li>
+                    <a href="register.html">REGISTER</a>
+                </li>
+            </span>
+            <span id="admin">
+                <li>
+                    <a href="add.html">MANAGE POST</a>
+                </li>
+            </span>
+            <li>
+                <a href="#">FOLLOW</a>
+            </li>
+            <li>
+                <a href="posts.html">POSTS</a>
+            </li>
+            <li>
+                <a href="#">FOREIGN NEWS</a>
+            </li>
+
+        </ul>
+    </nav>
+    <div class="body_part">
+        <div id="postDetails">
+            <form action="" method="post" id="editpost_frm">
+                <div id="edit_div" style="background-color: rgb(198, 194, 211); margin: auto !important; min-height: 400px; width: 700px; padding: 40px;">
+                    <input type="hidden" id="edit_id">
+                    <input type="hidden" id="token">
+                    <label for="edit_title" style="font-size: 1.4rem;"><strong>Title</strong></label><br>
+                    <input type="text" id="edit_title" class="input_box" style="width: 575px;"><br>
+                    <label for="edit_txtarea" style="font-size: 1.4rem;"><strong>Body</strong></label><br>
+                    <textarea name="" id="edit_txtarea"  cols="70" rows="15" style="padding: 10px; border: none; resize: none; margin: 15px 0;"></textarea><br>
+                    <button type="submit" class="btn" id="btn_sve">
+                        <i class="fas fa-save"></i>
+                        Update
+                    </button>
+                </div>
+            
+            </form>
+        </div>
+        
+    </div>
+    
+
+
+    
+    <footer id="foot">
+        <div id="div_foot">
+            hfghdnvb
+        </div>
+    </footer>
+
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <script>
+       function showPost(){
+            // Geting the Post ID from the URL
+            let pageUrl = new URL(window.location.href);
+            let id  = pageUrl.searchParams.get('id');
+            // console.log(id);
+
+            let dataObj = {
+                action: 'read_post',
+                post_id: id
+            }
+
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost/api_demo/api/manage_post.php',
+                data: dataObj,
+                dataType: 'json',
+                cache: false,
+                success: function(response){
+                    if(response.status === 'success'){
+                        displayPost(response.post);
+                    }else{
+                        alert(response.message);
+                        location.href = 'add.html';
+                        console.log(response)
+                    }
+                }
+            })
+        }
+        showPost();
+
+
+       function displayPost(post) {
+        //    console.log(post);
+            $('#edit_title').val(post.title);
+            $('#edit_id').val(post.id);
+            $('#edit_txtarea').val(post.body);
+        }
+
+
+        // Get Access Token
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost/api_demo/session.php',
+            data: {action: 'get_session'},
+            dataType: 'json',
+            success: function (response) {
+                if(response.status == 'success'){
+                   
+                    // Storing it input Element
+                    $('#token').val(response.access_token);
+                    // console.log(response.access_token);
+                }else{
+                    // location.href = 'http://localhost/api_demo/silver_splash/login.html';
+                }
+                // console.log(response);
+            }
+        });
+
+        $('#editpost_frm').on('submit', function(e){
+            e.preventDefault();
+            let data = {
+                action: 'edit_post',
+                post_id: $('#edit_id').val(),
+                title: $('#edit_title').val(),
+                body: $('#edit_txtarea').val(),
+                token: $('#token').val(),
+            }
+
+            $.ajax({
+               type: 'post',
+               url: 'http://localhost/api_demo/api/manage_post.php',
+               data: data,
+               dataType: 'json',
+               success: function(res){
+                   if(res.status === 'success'){
+                        alert(res.message)
+                   }else{
+                       alert(res.message)
+                   }
+               } 
+            })
+        })
+
+        function checkadmin(){
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost/api_demo/session.php',
+            data: {action: 'get_session'},
+            dataType: 'json',
+            success: function (response) {
+                if(response.status == 'success'){
+                    $('#guest').css({
+                        display: 'none'
+                    });
+                    $('#admin').css({
+                        display: 'inline'
+                    });
+                }else{
+                    $('#admin').css({
+                        display: 'none'
+                    });
+                    $('#guest').css({
+                        display: 'inline'
+                    });
+                }
+                
+            }
+        });
+
+    }
+
+    checkadmin();
+
+        
+    </script>
+    
+</body>
+</html>

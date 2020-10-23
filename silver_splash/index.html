@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API DEMO</title>
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body>
+    <div id="container">
+        <div id="headerlogin">
+            <div id="gmail" class="icons">
+                <a href="#"><i class="fa fa-envelope"></i> silversplashstore@yahoo.com</a>
+            </div>
+            <div id="facebook" class="icons">
+                <a href="#"><i class="fab fa-facebook-square"></i> silversplashstore@facebook.com</a>
+            </div>
+            <div id="whatsapp" class="icons">
+                <a href="#"><i class="fab fa-whatsapp"></i> 08034546578</a>
+            </div>
+            <div id="twitter" class="icons">
+                <a href="#"><i class="fab fa-twitter"></i> silversplashstore@twitter.com</a>
+            </div>
+        </div>
+    </div>
+    <nav id="menu">
+        <ul id="menu_ul">
+            <li>
+                <a href="index.html">HOME</a>
+            </li>
+            <span id="guest">
+                <li>
+                    <a href="login.html">LOGIN</a>
+                </li>
+                <li>
+                    <a href="register.html">REGISTER</a>
+                </li>
+            </span>
+            <span id="admin">
+                <li>
+                    <a href="add.html">MANAGE POST</a>
+                </li>
+            </span>
+            <li>
+                <a href="#">FOLLOW</a>
+            </li>
+            <li>
+                <a href="posts.html">POSTS</a>
+            </li>
+            <li>
+                <a href="#">FOREIGN NEWS</a>
+            </li>
+
+        </ul>
+    </nav>
+    <div class="body_part">
+        <div id=" article_content">
+            <h5>
+                <em>
+                    <strong>
+                        <small>
+                            <span id="no_posts" style="margin: 20px; padding: 50px 10px;"></span> Articles
+                        </small>
+                    </strong>
+                </em>
+            </h5>
+        </div>
+        <div class="container1" id="post_list">
+            
+        </div>
+        
+    </div>
+
+    
+    <footer id="foot">
+        <div id="div_foot">
+            hfghdnvb
+        </div>
+    </footer>
+
+    <script>
+        function fetchPost(){
+    $.ajax({
+        type: 'post',
+        url: 'http://localhost/api_demo/api/manage_post.php',
+        data: { action: 'fetch_posts' },
+        dataType: 'json',
+        success: function(response){
+            if(response.status === 'success'){
+                $('#no_posts').text(response.no_posts);
+                splitpost(response.posts)
+            }
+        }
+    })
+}
+fetchPost();
+
+function splitpost(postarray){
+    let postcard='';
+    postarray.forEach(function(post){
+        
+    postcard += `<div class="content">
+            <div class="pretty">
+                <a href="posts.html?post_id=${post.id}">
+                    <h3 id="title"> ${post.title} </h3>
+                    <small>By: ${post.author.firstname} ${post.author.lastname}</small>
+                </a>
+            </div>
+        </div>`;
+    });
+    console.log(postcard);
+
+    $('#post_list').html(postcard);
+}
+
+    function checkadmin(){
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost/api_demo/session.php',
+            data: {action: 'get_session'},
+            dataType: 'json',
+            success: function (response) {
+                if(response.status == 'success'){
+                    $('#guest').css({
+                        display: 'none'
+                    });
+                    $('#admin').css({
+                        display: 'inline'
+                    });
+                }else{
+                    $('#admin').css({
+                        display: 'none'
+                    });
+                    $('#guest').css({
+                        display: 'inline'
+                    });
+                }
+                
+            }
+        });
+
+    }
+
+    checkadmin();
+
+    </script>
+    
+</body>
+</html>
