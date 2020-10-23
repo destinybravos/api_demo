@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+      <div id="container">
+            <h3 id="logo">
+                    <i class="fa fa-user-plus"></i> Add New User
+                </h3>
+           <form  method="post" id="regform">
+                <div id="form_div">
+                    <label> Firstname:</label>
+                    <input type="text" name="fname" id="fname" class="textbox" required>
+
+                    <div id="form-group"></div><label > Lastname:</label>
+                    <input type="text" name="lname" id="lname" class="textbox" >
+                    <div id="form-group"></div>
+
+                    <label > Email:</label>
+                    <input type="email" name="email" id="email" class="textbox" required>
+                    <div id="form-group"></div>
+
+                    <label > Phone:</label>
+                    <input type="tel" name="Phone" id="Phone" class="textbox" required>
+                    <div id="form-group"></div>
+
+                    <label > Password:</label>
+                    <input type="password" name="pass" id="pass" class="textbox" required>
+                    <div id="form-group"></div>
+
+                    <label>Confirm Password</label>
+                    <input type="password" name="cpass" id="cpass" class="textbox" required>
+
+                    <button type="submit" id="btnsubmit"> <i class="fa fa-sign-in-alt"></i>Login</button>
+
+                    <span style="margin-left:40px;">Already have an account <a href="login.html">Login Here</a></span>
+                </div>
+           </form>
+      </div>
+      <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <script src="js/assign.js"></script>
+  </body>
+</html>
+  

@@ -1,11 +1,15 @@
+body{
+    background:rgb(221, 221, 221);
+}
 #form_edit_container{
-    border:thin solid lightgreen;
+    background:rgb(241, 240, 240);
+    border:thin solid darkgrey;
     max-width: 700px;
     margin:auto;  
-    padding:0px 20px 40px; 
-    margin-top:70px;
+    padding:10px 20px 20px; 
+    margin-top:50px;
     border-radius:10px;
-    background:rgb(175, 120, 120);
+    box-shadow:0 0 1px lightgrey;
 }
 
 header hr{
@@ -15,7 +19,6 @@ header hr{
 }
 header h1{
     text-align:center;
-    color:lightgrey;
 }
 .frm_input{
     margin:20px 40px;    
@@ -38,11 +41,13 @@ input:hover{
  label strong{
     font-size:20px;
     line-height: 40px;
-    color:lightgrey;
 }
+/* #title, #textarea_edit, #lbl_textArea{
+    display:none; 
+} */
 #textarea_edit{
     width: 98%;
-    height: 50vh;     
+    height: 20vh;     
     resize:none;    
 }
  #textarea_edit:hover{     
@@ -61,6 +66,6 @@ input[type="range"]{
     border:none;
     box-shadow:0 0 3px grey;
     border-radius:8px;
-    background:lightgreen;
+    background:blue;
     color:white;
 }

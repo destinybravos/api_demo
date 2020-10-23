@@ -1,0 +1,185 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#top_nav{
+    background-color: rgb(75, 116, 15);
+    color:rgb(240, 218, 218);
+    padding: 0 6px;
+}
+.max_width{
+    max-width: 1025px;
+    margin: auto;
+}
+#tnc{
+    display: flex;
+}
+#tnc aside:first-child{
+    flex: 1;
+    margin: auto;
+    text-align: center;
+}
+#tnc aside:first-child a{
+    text-decoration: none;
+    font-size: 2rem;
+}
+#tnc aside:last-child{
+    flex: 3;
+    text-align: right;
+}
+#tnc aside:last-child i{
+    margin:  10px 10px;
+    font-size: 1.2rem;
+}
+
+/* main nav part */
+#main_nav{
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 2px black;
+}
+#mnc{
+    display: flex;
+}
+#mnc ul{
+    flex: 4;
+}
+#mnc ul li{
+    padding: 10px;
+    display: inline-block;
+}
+#mnc ul li:hover{
+    background-color: rgb(75, 116, 15);
+    color: white;
+}
+#mnc a{
+    text-decoration: none;
+}
+#mnc a:hover{
+    background-color: rgb(75, 116, 15);
+    color: white
+}
+#mnc aside{
+    flex: 1;
+}
+#mnc aside div{
+    text-align: right;
+    padding: 10px; 
+}
+#mnc aside div a{
+    padding: 11px; 
+}
+
+/* full page and content on home.html */
+#full_page{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+}
+
+#full_page aside{
+    background-color: rgb(75, 116, 15);
+    color: white;
+    flex: 1;
+}
+#full_page aside div{
+    min-height: 30vh;
+    width: 100%;
+}
+
+#full_page div{
+    flex: 9.5;
+}
+#b{
+    width: 100%;
+    height: 100%;
+    margin: 15px 0 0 30%;
+}
+#post_data li{
+    list-style-type: none;
+    padding: 10px;
+}
+#post_data li a{
+    text-decoration: none;
+    color: white;
+}
+#formadd{
+    padding: 5px;
+    max-width: 400px;
+    min-height: 300px;
+    background-color: rgba(0, 0, 0, 0.658);
+}
+#formadd div{
+    margin: 15px auto;
+}
+#formadd div textarea{
+    width: 100%;
+    height: 300px;
+    resize: none;
+}
+#formadd div input{
+    width: 95%;
+    padding: 5px;
+}
+#submit{
+    padding: 5px 10px;
+    background-color: rgb(75, 116, 15);
+    color: rgb(224, 206, 206);
+    box-shadow:  1px 1px 3px black;
+    font-size: 1rem;
+}
+
+
+
+
+/* login form */
+.form1_container{
+    background-color: rgb(75, 116, 15); 
+    max-width: 400px;
+    min-height: 100px;
+    padding: 20px;
+    margin: 20vh auto;
+}
+.form1_container div{
+    margin: 20px auto;
+}
+.form1_container div a{
+    color: rgb(7, 7, 80);
+    text-decoration: none;
+}
+.form1_container div a:hover{
+    color: white;
+}
+.form1_container input{
+    padding: 7px;
+    width: 90%;
+    box-shadow: 1px 1px 3px black;
+}
+.btn{
+    padding: 5px 10px;
+    background-color: rgb(75, 116, 15);
+    color: rgb(36, 4, 4);
+    box-shadow:  1px 1px 3px black;
+    font-size: 1rem;
+}
+/* registration form */
+.form2_container{
+    background-color: rgb(143, 177, 92); 
+    max-width: 400px;
+    min-height: 100px;
+    padding: 20px;
+    margin: 10vh auto;
+}
+.form2_container div{
+    margin: 10px auto;
+}
+.form2_container label{
+    font-size: larger;
+    color: rgb(36, 4, 4);
+}
+.form2_container input{
+    display: block;
+    width: 90%;
+    padding: 5px;
+}

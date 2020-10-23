@@ -2,13 +2,58 @@
     margin:0;
     padding:0;
 }
+nav{
+    background:black;
+}
+nav ul{
+    margin:auto;
+    padding:20px;
+    list-style: none;    
+}
+nav ul li{
+    padding:11px;
+    display:inline;
+    margin:20px;
+}
+nav ul li a{
+    text-decoration:none;
+    color:white;
+}
+nav ul li:hover{
+    background:grey;
+}
+#banner{
+    background:url("../images/Screenshot_20200908-233311_1599607949125.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:center;
+    height:360px;  
+}
 #container{
     max-width: 1024px; 
     padding:20px;
     margin:auto;                
-}     
+}
+.content{           
+    max-width:250px;
+    padding:3px 10px; 
+    box-shadow: 0 0 5px grey;
+    border-radius:10px;
+    margin:20px;
+    display: inline-block;
+} 
+.content h4 p{
+    color:red;
+}
+.content p span{
+    color:red;
+    padding:5px; 
+    margin-top:10px;
+    margin:auto 10px;
+}
 #header{    
-    color:red;   
+    color:red;
+    border-radius:5px;   
 } 
 #header h4{
     margin:5px;    
@@ -16,14 +61,20 @@
 #header h4 p{
     margin-bottom:5px;
 }
-.content{           
-max-width:250px;
-padding:3px 10px; 
-box-shadow: 0 0 5px grey;
-border-radius:10px;
-margin:20px;
-display: inline-block;
-min-height: 50px;
+@media screen and (max-width:678px){
+    .content{
+        max-width:100% !important;
+    }
+    #banner{
+        background-position: right;
+        height:300px;
+    }   
+}
+@media screen and (max-width:478px){
+    #banner{
+        background-position:center !important;
+        height:300px;
+    }
 }
 .pimg{            
 height: 150px;

@@ -4,6 +4,7 @@ include_once 'server_connection.php';
 
     // Initialize response array
     $response = array();
+
     $action = $_POST['action'];
     echo $action2 = isset($_GET['action'])? $_GET['action'] :'' ;
 
@@ -130,7 +131,7 @@ include_once 'server_connection.php';
                     $author_id = getAuthorID($token, $conn);
                     if($post_data['author_id'] == $author_id){
                         //  Update Post
-                        $delete = $conn->query("DELETE from blogposts WHERE id='$post_id'");
+                        $delete = $conn->query("DELETE FROM blogposts WHERE id='$post_id'");
                         if($delete){
                             $response = [
                                 'status' => 'success',
@@ -141,7 +142,8 @@ include_once 'server_connection.php';
                             $response = [
                                 'status' => 'error',
                                 'status_code' => '4',
-                                'message' => 'Post could not be deleted due to an un-expected error!'
+                                'message' => 'Post could not be deleted due to an un-expected error!',
+                                'error' => $conn->error
                             ];
                         }
                     }else{

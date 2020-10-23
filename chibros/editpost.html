@@ -10,12 +10,12 @@
     <input type="hidden"id="memory_session">
     <div id="form_edit_container">
         <header>
-            <h1>MAKE YOUR POST HERE</h1>
+            <h1>POST EDITOR</h1>
             <hr>
         </header>
         <form id="post_form">
             <div class="form_input">
-                <input type="text"placeholder="ID:" id="edit-id" required>
+                <input type="text"placeholder="ID:" id="edit_id" required>
             </div>           
             <div class="form_input">
                 <input type="text"placeholder="Title:" id="title" required>
@@ -35,13 +35,16 @@
             <div class="form_input">                          
                 <button type="submit" id="btn_edit_post"class="btn_buttons">
                     Edit post
-                </button>  
+                </button> 
+                <button type="submit"id="btn_update_post"class="btn_buttons">
+                    Update Post
+                 </button>  
                 <button id="btn_view_post"class="btn_buttons">
                   view posts
                 </button>  
                 <button type="submit"id="btn_delete"class="btn_buttons">
                    Delete Post
-                </button>        
+                </button>                        
             </div>
         </form>
         

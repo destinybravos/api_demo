@@ -1,0 +1,321 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+#socialnav{
+    background-color: maroon;
+    color: white;
+    min-height: 30px;
+    position: static;
+}
+#socials{
+    display: flex;
+    max-width: 89%;
+    margin: 0 auto 0;
+}
+#add{
+    flex: 1;
+}
+#social{
+    flex: 1;
+    display: flex;
+    text-align: right;
+    padding: 20px 0;
+}
+.chat{
+    flex: 1;
+    padding-top: 2px;
+}
+.chat a{
+    text-decoration: none;
+    color: white;
+}
+.chat a :hover{
+    color: rgba(128, 128, 128, 0.829);
+}
+#blogpge{
+    background-color:rgba(128, 0, 0, 0.808);
+    
+}
+#title{
+    max-width: 89%;
+    color: white;
+    margin: 0 auto 4px;
+    text-align: center;
+    display: flex;
+    padding: 20px 0;
+}
+#aside1{
+    flex: 11;
+}
+#aside2{
+    flex: 1;
+    text-align: center;
+    background-color: rgba(128, 0, 0, 0.938);
+    padding-top: 9px;
+    margin-top: 4px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+#body{
+    max-width: 89%;
+    display: flex;
+    min-height: 200px;
+    background-color: rgba(128, 0, 0, 0.466);
+    margin: 10px auto 0;
+    box-shadow: -1px 2px 3px white;
+    border-radius: 15px;
+}
+.adverts{
+    flex: 1;
+    padding: 2px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+#advert0{
+    max-width: 89%;
+    margin: 0 auto 0;
+    background-image: url("../../img/man2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+#advert1{
+    max-width: 89%;
+    margin: 0 auto 0;
+    background-image: url("../../img/fee.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+        
+}
+#advert2{
+    max-width: 89%;
+    margin: 0 auto 0;
+    background-image: url("../../img/api_img.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+        
+}
+#advert3{
+    max-width: 89%;
+    margin: 0 auto 0;
+    background-image: url("../../img/highschool.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+        
+}
+#posts{
+    max-width: 89%;
+    box-shadow:2px 2px 2px white;
+    margin: 0 auto 0;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+#btnaddpost{
+    border: none;
+    background-color: white;
+    color:  rgba(128, 0, 0, 0.938);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+#mreadverts{
+    max-width: 99.9%;
+    margin: 0 auto 0;
+    background-image: url("../../img/highschool.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 75vh;
+}
+#decor{
+    background-color: rgba(128, 0, 0, 0.658);
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 20px 0;
+}
+#decor p{
+    color: #2ea2db;
+}
+/* dashboard entrance */
+#door{
+    background-color: rgba(128, 0, 0, 0.589);
+    max-width: 30%;
+    min-height: 35vh;
+    margin: 15% auto 0;
+    border-radius: 14px;
+    padding-top: 22px;
+    text-align: center;
+    color: white;
+}
+#door hr{
+    color: maroon;
+    margin-top: 15px;
+}
+#btnsin{
+    text-decoration: none;
+    border: none;
+    margin: auto;
+    padding: 10px;
+    border-radius: 9px;
+    color: white;
+    background-color: maroon;
+}
+#btnsup{
+    text-decoration: none;
+    border: none;
+    margin: 90px 1px 0 4%;
+    padding: 10px;
+    border-radius: 9px;
+    color: white;
+    background-color: maroon;
+}
+/* login form */
+form{
+    background-color: rgba(128, 0, 0, 0.829);
+    max-width: 30%;
+    min-height: 50vh;
+    margin: 30px auto 0;
+    border-radius: 14px;
+    padding-top: 22px;
+  
+}
+#valipass{
+    display: block;
+    margin:40px auto 0;
+    padding: 10px;
+    color: maroon;
+    text-align: left;
+    border-radius: 8px;
+}
+#usern{
+    display: block;
+    margin:34px auto 0;
+    padding: 10px;
+    text-align: left;
+    color: maroon;
+    border-radius: 8px;
+}
+#btnlgn{
+    border: none;
+    padding: 8px;
+    border-radius: 7px;
+    margin:10% auto 0 37%;
+    background-color: maroon;
+    color: white;
+    
+
+}
+/* registration */
+.txtbxs{
+    display: block;
+    margin:34px auto 0;
+    padding: 10px;
+    text-align: left;
+    color: maroon;
+    border-radius: 8px;
+    box-shadow: 4px 4px 4px 4px maroon;
+}
+#peye{
+    position: relative;
+    left: 200px;
+    bottom: 30px;
+    color: rgba(128, 0, 0, 0.932);
+}
+#peyes{
+    position: relative;
+    left: 200px;
+    bottom: 30px;
+    color: rgba(128, 0, 0, 0.932);
+    
+}
+#ceye{
+    position: relative;
+    left: 200px;
+    bottom: 63px;
+    color: rgba(128, 0, 0, 0.932);
+}
+#ceyes{
+    position: relative;
+    left: 200px;
+    bottom: 63px;
+    color: rgba(128, 0, 0, 0.932);
+}
+/* blog dashboard */
+#dtopnav{
+    max-width: 99.9%;
+    background-color: rgba(128, 0, 0, 0.753);
+    margin: 0 auto 0;
+    color: white;
+    text-align: center;
+    padding: 13px 8px;
+}
+#posting{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    max-width: 99.95%;
+    min-height: 95vh;
+}
+#navigate{
+    flex:1;
+    background-color: rgba(133, 5, 5, 0.781);
+    border-radius: 0 8px;
+}
+
+#display{
+    flex: 3;
+    background-color: rgba(128, 0, 0, 0.384);
+    box-shadow: -2px 2px 2px 2px maroon;
+    border-radius: 8px;
+    
+}
+.dna{
+    width: 90%;
+    color: white;
+    margin: 0 auto 0;
+    display: block;
+    border: none;
+    padding: 8px;
+    text-decoration: none;
+    background-color: rgb(148, 34, 34);
+    border-radius: 8px;
+    box-shadow: -2px -2px white;
+    margin: 5px;
+}
+.dna:hover{
+    padding: 11px 8px;
+    background-color: rgb(248, 201, 201);
+    color: maroon;
+}
+#adepost{
+    background-color: rgba(128, 0, 0, 0.226);
+    color: white;
+    box-shadow: 2px 2px rgb(104, 15, 15);
+    margin: 4px 0;
+    height:250px;
+    width: 90%;
+}
+#ipostcont{
+    display: none;
+    margin: 10px; 
+}
+#ixoratitle{
+    background-color:rgb(248, 201, 201);
+    color: maroon;
+    padding: 10px;
+    
+}
+#include_post{
+    border: none;
+    background-color: maroon;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+
+}
