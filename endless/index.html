@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header style="background-color: inherit;">
+    <header id="head" style="background-color: inherit;">
         <div id="first1">
             <aside id="side1">
-                <i class="fa fa-envelope"> jcchi2004@yahoo.com</i>
-                <i class="fa fa-phone-volume"> 08067134630</i>
+                <i class="fa fa-envelope" style="font-size: 13px;"> jcchi2004@yahoo.com</i>
+                <i class="fa fa-phone-volume" style="font-size: 13px;"> 08067134630</i>
             </aside>
             <aside id="side2">
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-whatsapp"></i>
+               <a href="#"> <i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+               <a href="#"> <i class="fab fa-twitter"></i></a>
+               <a href="#"> <i class="fab fa-whatsapp"></i></a>
             </aside>
             <section id="sec3"> 
                 <input type="text" placeholder="search...">
@@ -32,7 +32,7 @@
         <div id="last">
             <span id="pan1"><strong>ENDLESS BLOG</strong> </span>
             <span id="pan2">
-                <a href="#">HOME</a>
+                <a href="index.html">HOME</a>
                 <a href="#">ABOUT</a>
                 <a href="#">BLOG</a>
                 <a href="#">CONTACT</a>
@@ -43,14 +43,10 @@
     </header>
     
     <div id="card">
-        <a href="#">
-            <div id="cardimg">
-
-            </div>
-           
-        </a>
+       
     </div>
 
+    
 
     <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
     <script src="js/assign.js"></script>
@@ -91,14 +87,17 @@
             data:fetch,
             success: function (response) {
                 let fetch_post = '';
-               response.status.forEach( function (post) {
-                    fetch_post +=`<div id="title"><strong >${post.title}</strong></div> 
-            
-                                    <div id="author">
-                                        ${post.author.firstname}
-                                    </div>`
+               response.posts.forEach( function (post) {
+                    fetch_post +=` <div id="cardimg">
+                                    <img src="../img/dummy_img.jpg" alt="image not found">
+                                    <strong id="title" >${post.title}</strong><br>
+                                    <small  id="author"> Author: ${post.author.firstname} ${post.author.firstname}</small><br>
+                                    <a href="read_more.html?post_id=${post.id}"><small>Read More</small></a>
+                                </div>  `
+                                
                    
                })
+               $('#card').html(fetch_post);
             }
         });
 

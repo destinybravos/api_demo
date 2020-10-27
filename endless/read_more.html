@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read More</title>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header id="head" style="background-color: inherit;">
+        <div id="first1">
+            <aside id="side1">
+                <i class="fa fa-envelope" style="font-size: 13px;"> jcchi2004@yahoo.com</i>
+                <i class="fa fa-phone-volume" style="font-size: 13px;"> 08067134630</i>
+            </aside>
+            <aside id="side2">
+               <a href="#"> <i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+               <a href="#"> <i class="fab fa-twitter"></i></a>
+               <a href="#"> <i class="fab fa-whatsapp"></i></a>
+            </aside>
+            <section id="sec3"> 
+                <input type="text" placeholder="search...">
+                <button id="btnsearch">
+                    Search
+                </button>
+            </section>
+        </div>
+
+        <div id="last">
+            <span id="pan1"><strong>ENDLESS BLOG</strong> </span>
+            <span id="pan2">
+                <a href="index.html">HOME</a>
+                <a href="#">ABOUT</a>
+                <a href="#">BLOG</a>
+                <a href="#">CONTACT</a>
+                <a href="login.html" id="log">Login</a>
+                <a href="register.html" id="reg">Register</a>
+            </span>
+        </div>
+    </header>
+
+
+    
+        <div id="readmore_container">
+            <div id="fread">
+               
+            </div>
+        </div>
+
+
+
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <script src="js/assign.js"></script>
+
+
+<script>
+        function fetchPost(){
+            // Geting the Post ID from the URL
+            let pageUrl = new URL(window.location.href);
+            let id  = pageUrl.searchParams.get('post_id');
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost/api_demo/api/manage_post.php',
+                data: { action: 'read_post', post_id:id },
+                dataType: 'json',
+                cache: false,
+                success: function(res){
+                    if(res.status === 'success'){
+                        displayPost(res.post);
+                    }else{
+                        // alert(res.message);
+                        // location.href = 'index.html';
+                    }
+                }
+            })
+        }
+        fetchPost();
+
+        function displayPost(post2Display){
+            let postContent = ` <h3 style="margin-left: 10px;">${post2Display.title}</h3>
+                <em><small  style="color: blue; margin-left: 10px;">By: ${post2Display.author.firstname} ${post2Display.author.lastname}</small></em>
+                <p id="readpost">
+                    ${post2Display.body}
+                </p> `
+            
+
+            $('#fread').html(postContent);
+        }
+    </script>
+</body>
+</html>

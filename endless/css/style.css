@@ -134,6 +134,35 @@ header{
 #frmedit{
     padding: 20px;
 }
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 6px;
+}
+#id_table{
+    max-width: 300px;
+    margin: 30px;
+    overflow-y: scroll;
+    background-color: aqua;
+    height: 430px;
+    flex: 1;
+}
+#contain_edit{
+    flex: 1;
+    width: 500px;
+    max-width: 500px;
+    background-color: aqua;
+    margin: 30px;
+    box-shadow: 0 0 5px black;
+    border-radius: 30px;
+}
+
+ #edit_container{
+     display: flex;
+     max-width: 900px;
+     margin: 0 auto;
+     
+}
 
  #btnsub{
      padding: 10px;
@@ -166,7 +195,7 @@ header{
  }
 
  #contains{
-     margin: 30px auto;
+     margin: 10px auto;
      max-width: 300px;
      min-height: 100px;
      background-color: aqua;
@@ -201,6 +230,9 @@ header{
     flex: 1;
     text-align: right;
 
+}
+#side2 a{
+    color: white;
 }
 
 .fa-phone-volume{
@@ -239,6 +271,9 @@ header{
     display: flex;
 }
 
+#head{
+    margin-bottom: 30px;
+}
 #pan1{
     flex: 1;
     margin-left: 70px;
@@ -272,45 +307,62 @@ header{
     border-radius: 5px;
 }
 
-#card{
-    text-decoration: none;
-    margin: 10vh;
-    width: 15%;
+#cardimg{
+   margin:9px ;
+    width: 200px;
+    display: inline-block;
     background-color: aqua;
-    height: 300px;
+    min-height: 230px;
     box-shadow: 0 0 2px black;
     text-align: center;
     border: 1px solid;
-    border-radius: 5px;
 }
-#card a{
-    text-decoration: none;
-}
+  
+
 
 #title{
     color: black;
     padding: 13px;
     font-size: 1.0rem;
 }
-#card:hover{
+#cardimg:hover{
     box-shadow: 0 0 30px tomato;
     background-color: tomato;
 }
 
 #author{
     font-style: italic;
+    color: black;
 }
  
-#cardimg{
-    background-image: url('/../api_demo/img/dummy_img.jpg');
-    background-position: center;
-    box-sizing: border-box;
+#cardimg img{
     width: 100%;
-    height: 200px;
-    
-
+    height: 150px; 
 }
 
+#card{
+    margin-top: 60px;
+    text-align: center;
+}
+
+#readmore_container{
+    max-width: 900px;
+    margin: 20vh auto ;
+    min-height: 100px;
+    background-color: aqua;
+    
+}
+
+#fread{
+    padding: 20px;
+    
+    /* background-color: bisque; */
+}
+#readpost{ 
+    padding:10px;
+
+    /* background-color: lawngreen; */
+}
  @media screen and (max-width:767px){
      #first1{
          display:block;
@@ -322,4 +374,18 @@ header{
      #last{
          display: block;
      }
+  #edit_container{ 
+     display: block;
+  }
+
+     #contain_edit{
+         display: block;
+     }
+     #id_table{
+         display: block;
+     }
+     #card{
+         margin-top: 80px;
+     }
+    
  }
