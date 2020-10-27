@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API DEMO</title>
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body>
+    <div id="container">
+        <div id="headerlogin">
+            <div id="gmail" class="icons">
+                <a href="#"><i class="fa fa-envelope"></i> silversplashstore@yahoo.com</a>
+            </div>
+            <div id="facebook" class="icons">
+                <a href="#"><i class="fab fa-facebook-square"></i> silversplashstore@facebook.com</a>
+            </div>
+            <div id="whatsapp" class="icons">
+                <a href="#"><i class="fab fa-whatsapp"></i> 08034546578</a>
+            </div>
+            <div id="twitter" class="icons">
+                <a href="#"><i class="fab fa-twitter"></i> silversplashstore@twitter.com</a>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <nav id="menu">
+            <ul id="menu_ul">
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+                <li>
+                    <a href="login.html">LOGIN</a>
+                </li>
+                <li>
+                    <a href="register.html">REGISTER</a>
+                </li>
+                <li>
+                    <a href="#">FOLLOW</a>
+                </li>
+                <li>
+                    <a href="posts.html">POSTS</a>
+                </li>
+                <li>
+                    <a href="#">FOREIGN NEWS</a>
+                </li>
+    
+            </ul>
+        </nav>
+    </div>
+
+        <form action="" method="post" id="login_form" class="myfrm">
+            <div class="gen_divform">
+                <strong style=" padding-bottom: 40px; text-align: center;"><h3>USER LOGIN</h3><br></strong> 
+                <div class="div_form"> 
+                    <strong><label for="user_id">Email or Phone:</label></strong>
+                    <input type="text" name="user_id" id="email" class="input_box" required>
+                </div>
+                <div class="div_form">
+                    <strong><label for="pass">Password:</label></strong>
+                    <input type="password" name="pass" id="pass" class="input_box" required>
+                </div>
+                <div class="div_form">
+                    <button type="submit" id="btn_login" class="btn">
+                        <i class="fa fa-sign-in-alt"></i>
+                        Login
+                    </button>
+                    <a href="register.html" style="text-decoration: none; color: rgb(13, 13, 48);">Don't have an Account click here</a>
+                </div>
+                <div id="error_alert">
+                    
+                </div>
+            </div>
+
+        </form>
+        
+
+
+        <footer id="foot">
+            <div id="div_foot">
+                hfghdnvb
+            </div>
+        </footer>
+        
+        <script>
+            $('#login_form').on('submit', function(e){
+            e.preventDefault();
+            $userid = $('#email').val();
+            $pass = $('#pass').val();
+
+        
+            let datalogin = {
+                user_id : $userid,
+                password : $pass
+            }
+
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost/api_demo/api/login.php',
+                data: datalogin,
+                dataType: 'json',
+                // processData : false,
+                // contentType: false,
+                success: function(res){
+                    if(res.status == 'success'){
+                        // Make Another Ajax request to store access token in a session
+                        $.ajax({
+                            type: 'post',
+                            url: 'http://localhost/api_demo/session.php',
+                            dataType: 'json',
+                            data: {
+                                    action: 'set_session', 
+                                    token: res.user.access_token
+                                },
+                            success: function(response){
+                                console.log(response);
+                                if(response.status == "success"){
+                                    window.location.href="add.html";
+                                }else{
+                                    $('#error_alert').text(response.message)
+                                }
+                            
+                            }
+                        })
+                    }else{
+                        $('#error_alert').text(res.message)
+                    }
+                }
+            });
+        });
+        </script>
+
+</body>
+</html>

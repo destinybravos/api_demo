@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API DEMO</title>
+    <link rel="stylesheet" href="http://localhost/js_tutorial_repo/fa/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body>
+    <div id="container">
+        <div id="headerlogin">
+            <div id="gmail" class="icons">
+                <a href="#"><i class="fa fa-envelope"></i> silversplashstore@yahoo.com</a>
+            </div>
+            <div id="facebook" class="icons">
+                <a href="#"><i class="fab fa-facebook-square"></i> silversplashstore@facebook.com</a>
+            </div>
+            <div id="whatsapp" class="icons">
+                <a href="#"><i class="fab fa-whatsapp"></i> 08034546578</a>
+            </div>
+            <div id="twitter" class="icons">
+                <a href="#"><i class="fab fa-twitter"></i> silversplashstore@twitter.com</a>
+            </div>
+        </div>
+    </div>
+    <nav id="menu">
+        <ul id="menu_ul">
+            <li>
+                <a href="index.html">HOME</a>
+            </li>
+            <span id="guest">
+                <li>
+                    <a href="login.html">LOGIN</a>
+                </li>
+                <li>
+                    <a href="register.html">REGISTER</a>
+                </li>
+            </span>
+            <span id="admin">
+                <li>
+                    <a href="add.html">MANAGE POST</a>
+                </li>
+            </span>
+            <li>
+                <a href="#">FOLLOW</a>
+            </li>
+            <li>
+                <a href="posts.html">POSTS</a>
+            </li>
+            <li>
+                <a href="#">FOREIGN NEWS</a>
+            </li>
+
+        </ul>
+    </nav>
+    <div class="body_part">
+        <div id="deletePost">
+            <form method="post" class="myfrm" id="deletepost_frm">
+                <input type="hidden" id="delete_post">
+                    <input type="hidden" id="token">
+            </form>
+            
+        </div>
+        
+    </div>
+    
+
+
+    
+    <footer id="foot">
+        <div id="div_foot">
+            hfghdnvb
+        </div>
+    </footer>
+
+    <script src="http://localhost/js_tutorial_repo/js/jquery.js"></script>
+    <script>
+
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost/api_demo/session.php',
+            data: {action: 'get_session'},
+            dataType: 'json',
+            success: function(res){
+                if(res.status == 'success'){
+
+                    $('#token').val(res.access_token);
+                        // console.log(res.access_token);
+                
+                }else{
+                    // alert(res.message)
+                }
+                    console.log(res);
+            }
+
+                          
+
+        });
+        
+    </script>
+    
+</body>
+</html>

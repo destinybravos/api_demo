@@ -158,16 +158,18 @@
     margin-top: 15px;
 }
 #btnsin{
+    text-decoration: none;
     border: none;
-    margin: 65px 1px 0 40px;
+    margin: auto;
     padding: 10px;
     border-radius: 9px;
     color: white;
     background-color: maroon;
 }
 #btnsup{
+    text-decoration: none;
     border: none;
-    margin: 65px 1px 0 4%;
+    margin: 90px 1px 0 4%;
     padding: 10px;
     border-radius: 9px;
     color: white;
@@ -296,5 +298,24 @@ form{
     color: white;
     box-shadow: 2px 2px rgb(104, 15, 15);
     margin: 4px 0;
-    display: none; 
+    height:250px;
+    width: 90%;
+}
+#ipostcont{
+    display: none;
+    margin: 10px; 
+}
+#ixoratitle{
+    background-color:rgb(248, 201, 201);
+    color: maroon;
+    padding: 10px;
+    
+}
+#include_post{
+    border: none;
+    background-color: maroon;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+
 }
